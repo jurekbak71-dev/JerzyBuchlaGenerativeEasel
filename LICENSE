@@ -1,0 +1,6 @@
+Nowe pliki implementacji, testów i narzędzi w tym przyroście: SPDX-License-Identifier: AGPL-3.0-only.
+Pełny tekst: LICENSES/AGPL-3.0.txt.
+
+JUCE: AGPLv3, zgodnie z LICENSES/JUCE.md. VST3 SDK: MIT, LICENSES/VST3.txt.
+Istniejące dokumenty i zewnętrzne repozytoria zachowują swoje prawa/licencje.
+Żaden znak towarowy ani grafika Buchla nie jest udzielana tą licencją.

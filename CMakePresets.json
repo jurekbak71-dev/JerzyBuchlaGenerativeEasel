@@ -1,0 +1,10 @@
+{
+ "version": 6,
+ "configurePresets": [
+  {"name":"core","generator":"Ninja","binaryDir":"${sourceDir}/build/core","cacheVariables":{"GARDEN_PLUGIN":"OFF","CMAKE_BUILD_TYPE":"Debug"}},
+  {"name":"linux","generator":"Ninja","binaryDir":"${sourceDir}/build/linux","cacheVariables":{"CMAKE_BUILD_TYPE":"Release","FETCHCONTENT_SOURCE_DIR_JUCE":"${sourceDir}/.cache/JUCE"}},
+  {"name":"windows","generator":"Visual Studio 17 2022","architecture":"x64","binaryDir":"${sourceDir}/build/windows"}
+ ],
+ "buildPresets":[{"name":"core","configurePreset":"core"},{"name":"linux","configurePreset":"linux","jobs":2},{"name":"windows","configurePreset":"windows","configuration":"Release","jobs":2}],
+ "testPresets":[{"name":"core","configurePreset":"core","output":{"outputOnFailure":true}},{"name":"linux","configurePreset":"linux","output":{"outputOnFailure":true}},{"name":"windows","configurePreset":"windows","configuration":"Release","output":{"outputOnFailure":true}}]
+}

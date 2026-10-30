@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: AGPL-3.0-only
+#pragma once
+#include "Plugin.h"
+class GardenEditor final:public juce::AudioProcessorEditor,private juce::Timer {
+public:
+ explicit GardenEditor(GardenProcessor&);
+ ~GardenEditor()override;
+ void paint(juce::Graphics&)override;
+ void resized()override;
+ void mouseDown(const juce::MouseEvent&)override;
+ void mouseDrag(const juce::MouseEvent&)override;
+ void mouseUp(const juce::MouseEvent&)override;
+ void setExpert(bool b);
+private:
+ GardenProcessor& processor;
+ juce::LookAndFeel_V4 look;
+ std::vector<std::unique_ptr<juce::Slider>> knobs;
+ std::vector<std::unique_ptr<juce::Label>> labels;
+ std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> attachments;
+ std::array<juce::ComboBox,5> choices;
+ std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment>> choiceAttachments;
+ juce::TextButton start{"FREE START"},sync{"HOST"},panic{"PANIC"},expert{"EXPERT"},save{"SAVE"},load{"LOAD"},normal{"NORMAL"},clear{"CLEAR"};
+ std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::ButtonAttachment>> buttonAttachments;
+ std::unique_ptr<juce::FileChooser> chooser;
+ std::array<juce::Point<float>,garden::portCount> jacks{};
+ int dragging=-1,heldNote=-1;juce::Point<float> cursor;
+ juce::String status="Drag OUT to IN. Right click a cable to inspect, mute or remove.";
+ void timerCallback()override;
+ int jackAt(juce::Point<float>)const;
+ juce::Path cablePath(const garden::Cable&)const;
+ void knob(const char*,const char*,int module,int slot);
+ bool expertView=false;
+};

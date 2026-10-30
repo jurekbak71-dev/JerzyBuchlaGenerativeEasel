@@ -1,0 +1,14 @@
+PASS plugin MIDI idle silent
+PASS MIDI event offset respected
+PASS MIDI note produces stereo audio
+PASS plugin route accepted
+PASS routing state roundtrip
+PASS parameter state roundtrip
+PASS out of range state rejected atomically
+PASS malformed state leaves existing patch intact
+PASS plugin offline render invariant to block size
+PASS 24 bit stereo WAV offline export written
+PASS WAV file readback format and duration
+PASS WAV decoded
+PASS WAV readback matches processor within 24 bit quantisation
+RESULT plugin integration complete

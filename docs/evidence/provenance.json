@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-30",
+  "platform": "Linux x86_64",
+  "compiler": "GCC 14.2.0",
+  "juce": "29396c22c93392d6738e021b83196283d6e4d850",
+  "pluginval": "ed19c2c16b57a6d94db391bea3ef4a80b769d5bf",
+  "source_sha256": {
+    "CMakeLists.txt": "c80503e1dd271df3498999ad307cc3e5639a1ab38bc6f737e17262b406af9776",
+    "CMakePresets.json": "726c94177825d695ed5b808ec742c3c875743d9bde775a48da402761f13d080f",
+    "src/Editor.cpp": "8d1a1bfae9618619decf6f5884584e3074a36a08cfec4724774edbd297a1a110",
+    "src/Editor.h": "bcffe8797f26cde2869d3921b30173145d85c51e51ad869f079ffb98363f7215",
+    "src/Engine.h": "62ca520e16d317679cd2918d7b3f87a8dae6a7a3558d4b322aec69818100fd02",
+    "src/Patch.h": "f224f6d33529097e88b9ff4448ba7e1353dd87c3cd5329663d91ae269f3b53e2",
+    "src/Plugin.cpp": "e77fe4490fa48c12fc91961d3fad3628453df1484eb162efda1d4b7a5b469499",
+    "src/Plugin.h": "abaf82084fae502b33c68f7cb2cf12520f52838b0e4ff89110eb699b5d3e4b78",
+    "tests/CoreTests.cpp": "7232e6b38709ddfd28f746db965565ec34632892dbbca9aedd9fad494c1cfd78",
+    "tests/PluginTests.cpp": "31e43bc67322583bfee0bceea66ace47e43b90d313d6875a1fff0b75dcdec514"
+  },
+  "binary_sha256": {
+    "build/linux/VoltageGarden_artefacts/Release/Standalone/Voltage Garden": "809430aafbfd0452c7fb629fe3b02b1552f571f9644ad1d50bbed3a0f30d2d1f",
+    "build/linux/VoltageGarden_artefacts/Release/VST3/Voltage Garden.vst3/Contents/x86_64-linux/Voltage Garden.so": "b9e5b54d4f07dfefbad8663213d9345d99a85e83f2b1e3646006cd594f98a7dd"
+  },
+  "windows": "NOT TESTED",
+  "fl_studio": "NOT TESTED"
+}
