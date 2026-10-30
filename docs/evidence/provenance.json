@@ -21,5 +21,6 @@
     "build/linux/VoltageGarden_artefacts/Release/VST3/Voltage Garden.vst3/Contents/x86_64-linux/Voltage Garden.so": "b9e5b54d4f07dfefbad8663213d9345d99a85e83f2b1e3646006cd594f98a7dd"
   },
   "windows": "NOT TESTED",
-  "fl_studio": "NOT TESTED"
+  "fl_studio": "NOT TESTED",
+  "source_commit": "77f9cb282a24d234970ee5ecce5ae7dd1f46a75c"
 }
