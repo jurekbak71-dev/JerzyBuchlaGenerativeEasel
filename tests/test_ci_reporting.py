@@ -91,6 +91,24 @@ class ReportingTests(unittest.TestCase):
         refs = self.git('--git-dir=' + str(self.remote), 'show-ref')
         self.assertNotIn('windows-build-status', refs)
 
+    def test_progress_is_restricted_to_opted_in_runner_output(self):
+        spec = importlib.util.spec_from_file_location('ci_command', WRAPPER)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        env = dict(GITHUB_ACTIONS='true', GARDEN_CI_PROGRESS='1', GITHUB_EVENT_NAME='push')
+        self.assertTrue(module.progress_enabled(ROOT / 'out/ci/build.log', env))
+        self.assertFalse(module.progress_enabled(self.work / 'build.log', env))
+        env['GITHUB_EVENT_NAME'] = 'pull_request'
+        self.assertFalse(module.progress_enabled(ROOT / 'out/ci/build.log', env))
+        self.assertFalse(module.progress_enabled(ROOT / 'out/ci/build.log', {}))
+
+    def test_missing_executable_is_reported_in_log(self):
+        log = self.work / 'missing.log'
+        result = subprocess.run([sys.executable, str(WRAPPER), str(log),
+                                 'not-a-real-voltage-garden-executable'], capture_output=True)
+        self.assertEqual(result.returncode, 127)
+        self.assertIn(b'failed to start command', log.read_bytes())
+
     def test_command_wrapper_preserves_failure_and_output(self):
         log = self.work / 'command.log'
         result = subprocess.run([sys.executable, str(WRAPPER), str(log), sys.executable,

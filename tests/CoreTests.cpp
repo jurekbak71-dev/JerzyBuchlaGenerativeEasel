@@ -7,6 +7,7 @@
 #include <atomic>
 #include <thread>
 #include <vector>
+#include <memory>
 thread_local bool realtime=false;
 thread_local int realtimeAllocations=0;
 void* operator new(std::size_t bytes){if(realtime)++realtimeAllocations;if(void* p=std::malloc(bytes?bytes:1))return p;throw std::bad_alloc();}
@@ -20,7 +21,7 @@ int checks=0;
 void check(bool b,const char* what){++checks;if(!b){std::cerr<<"FAIL "<<what<<'\n';std::exit(1);}std::cout<<"PASS "<<what<<'\n';}
 double energy(const std::vector<float>& x){double s=0;for(auto f:x)s+=f*f;return s/x.size();}
 std::vector<float> render(int block,Settings settings,double rate=48000,Graph graph=Graph::normal(),int samples=96000){
- Engine e;e.prepare(rate);e.setGraph(graph);std::vector<float> result;result.reserve(samples);
+ auto storage=std::make_unique<Engine>();auto& e=*storage;e.prepare(rate);e.setGraph(graph);std::vector<float> result;result.reserve(samples);
  for(int n=0;n<samples;n+=block){e.begin(settings,{true,n*120./(60*rate),120,true});
   for(int i=0;i<std::min(block,samples-n);++i)result.push_back(e.sample(i)[0]);}
  return result;
@@ -39,7 +40,7 @@ int main(){
  auto empty=render(256,s,48000,Graph{});check(energy(empty)==0,"empty graph is silent: graph controls output");
  auto patched=Graph::normal();check(patched.add({Port::mod,Port::fmIn}),"FM cable added");s.fm=.8f;auto fm=render(256,s,48000,patched);auto dry=render(256,s);check(fm!=dry,"adding modulation cable changes rendered audio");
  auto muted=Graph::normal();muted.cables[2].muted=true;muted.compile();auto disconnected=render(64,s,48000,muted);check(energy(disconnected)==0,"muting oscillator cable silences audio path");
- Engine midi;midi.prepare(48000);s={};s.wet=0;midi.begin(s,{});midi.noteOn(69,1);std::vector<float> tone(48000);
+ auto midiStorage=std::make_unique<Engine>();auto& midi=*midiStorage;midi.prepare(48000);s={};s.wet=0;midi.begin(s,{});midi.noteOn(69,1);std::vector<float> tone(48000);
  for(int i=0;i<48000;++i){tone[i]=midi.sample(i)[0];}
  check(energy(tone)>.001,"MIDI note creates sound");
  int crossings=0;for(int i=24001;i<48000;++i)if(tone[i-1]<=0&&tone[i]>0)++crossings;check(std::abs(crossings*2-440)<=2,"A4 oscillator frequency 440 Hz");
@@ -51,7 +52,7 @@ int main(){
   auto stress=render(block,s,rate,patched,static_cast<int>(rate/3));bool finite=true;for(float f:stress)finite&=std::isfinite(f)&&std::abs(f)<=.98f;
   check(finite,("finite bounded stress "+std::to_string(int(rate))+" / "+std::to_string(block)).c_str());
  }
- Engine realtimeEngine;realtimeEngine.prepare(48000);auto rtGraph=Graph::normal();
+ auto realtimeEngineStorage=std::make_unique<Engine>();auto& realtimeEngine=*realtimeEngineStorage;realtimeEngine.prepare(48000);auto rtGraph=Graph::normal();
  realtime=true;
  realtimeEngine.begin(s,{true,0,120,true});realtimeEngine.setGraph(rtGraph);
  for(int i=0;i<48000;++i)realtimeEngine.sample(i);
@@ -59,20 +60,27 @@ int main(){
  const auto lpgEnergy=[](float hz,int mode){LPG l;double total=0;for(int i=0;i<48000;++i){float y=l.tick(float(std::sin(2*pi*hz*i/48000)),1,48000,.2f,2000,mode);if(i>24000)total+=y*y;}return total;};
  check(lpgEnergy(10000,0)<lpgEnergy(10000,1)*.1,"LPG attenuates high frequency relative to VCA");
  check(lpgEnergy(100,0)>lpgEnergy(10000,0)*5,"LPG preserves bass relative to treble");
- Engine loop;loop.prepare(48000);Settings midiSettings;loop.begin(midiSettings,{true,0,120,true});loop.noteOn(60,1);for(int i=0;i<256;++i)loop.sample(i);
+ auto loopStorage=std::make_unique<Engine>();auto& loop=*loopStorage;loop.prepare(48000);Settings midiSettings;loop.begin(midiSettings,{true,0,120,true});loop.noteOn(60,1);for(int i=0;i<256;++i)loop.sample(i);
  loop.begin(midiSettings,{true,0,120,true});float afterLoop=0;for(int i=0;i<256;++i)afterLoop+=std::abs(loop.sample(i)[0]);check(afterLoop==0,"timeline loop clears stale MIDI gate");
- Engine malformed;malformed.prepare(NAN);malformed.begin(s,{true,1.e300,INFINITY,true});bool guarded=true;for(int i=0;i<100;++i){auto x=malformed.sample(i);guarded &= std::isfinite(x[0])&&std::isfinite(x[1]);}check(guarded,"invalid sample rate and extreme host timeline guarded");
- Engine priority,reference;priority.prepare(48000);reference.prepare(48000);Settings plain;plain.wet=0;
+ auto malformedStorage=std::make_unique<Engine>();auto& malformed=*malformedStorage;malformed.prepare(NAN);malformed.begin(s,{true,1.e300,INFINITY,true});bool guarded=true;for(int i=0;i<100;++i){auto x=malformed.sample(i);guarded &= std::isfinite(x[0])&&std::isfinite(x[1]);}check(guarded,"invalid sample rate and extreme host timeline guarded");
+ auto priorityStorage=std::make_unique<Engine>();auto referenceStorage=std::make_unique<Engine>();auto& priority=*priorityStorage;auto& reference=*referenceStorage;priority.prepare(48000);reference.prepare(48000);Settings plain;plain.wet=0;
  priority.begin(plain,{});reference.begin(plain,{});priority.noteOn(60,.2f);reference.noteOn(60,.2f);priority.noteOn(64,1.f);
  for(int i=0;i<100;++i){priority.sample(i);}
  priority.noteOff(64);
  double fallbackEnergy=0,referenceEnergy=0;
  for(int i=0;i<48000;++i){auto x=priority.sample(i)[0],y=reference.sample(i)[0];if(i>24000){fallbackEnergy+=x*x;referenceEnergy+=y*y;}}
  check(std::abs(fallbackEnergy/referenceEnergy-1)<.05,"last-note fallback restores original velocity");
- Engine duplicate;duplicate.prepare(48000);duplicate.begin(plain,{});duplicate.noteOn(60,1);for(int i=0;i<1000;++i)duplicate.sample(i);
+ auto duplicateStorage=std::make_unique<Engine>();auto& duplicate=*duplicateStorage;duplicate.prepare(48000);duplicate.begin(plain,{});duplicate.noteOn(60,1);for(int i=0;i<1000;++i)duplicate.sample(i);
  duplicate.noteOff(60);duplicate.sustain(true);duplicate.noteOff(60);double duplicateTail=0;
  for(int i=0;i<96000;++i){auto x=duplicate.sample(i)[0];if(i>90000)duplicateTail+=std::abs(x);}
  check(duplicateTail<.001,"duplicate NoteOff cannot resurrect a released note under sustain");
+ auto pulserPatch=Graph::normal();pulserPatch.add({Port::pulse,Port::lpg1Gate});Settings pulseSettings;pulseSettings.wet=0;pulseSettings.decay=.015f;
+ auto hostStoppedStorage=std::make_unique<Engine>();auto& hostStopped=*hostStoppedStorage;hostStopped.prepare(48000);hostStopped.setGraph(pulserPatch);hostStopped.begin(pulseSettings,{false,0,120,true});double stoppedPulse=0;
+ for(int i=0;i<48000;++i)stoppedPulse+=std::abs(hostStopped.sample(i)[0]);
+ check(stoppedPulse==0,"patched HOST pulser remains silent when transport is stopped");
+ auto freePulserStorage=std::make_unique<Engine>();auto& freePulser=*freePulserStorage;freePulser.prepare(48000);freePulser.setGraph(pulserPatch);pulseSettings.hostSync=false;pulseSettings.run=true;pulseSettings.tempo=120;freePulser.begin(pulseSettings,{});
+ double pulseOn=0,pulseGap=0;for(int i=0;i<4800;++i){auto x=freePulser.sample(i)[0];if(i<480)pulseOn+=x*x;if(i>=2880)pulseGap+=x*x;}
+ check(pulseOn>.001&&pulseGap<pulseOn*.001,"explicit FREE clock drives pulser in MIDI mode and releases between pulses");
  auto start=std::chrono::steady_clock::now();render(256,s,48000,patched,48000*5);double sec=std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();
  std::cout<<"BENCHMARK 5 seconds audio / "<<sec<<" seconds compute (not host CPU measurement)\n";
  std::cout<<"RESULT "<<checks<<" checks passed\n";

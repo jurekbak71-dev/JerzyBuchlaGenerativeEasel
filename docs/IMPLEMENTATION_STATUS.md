@@ -54,3 +54,9 @@ Przygotowano lokalnie dodatkowy mechanizm raportowania wyniku Windows poprzez os
 ## Zgoda na raportowanie CI
 
 Użytkownik wyraźnie zatwierdził `contents:write` do raportów Windows. Wysłano commit `47dbc3f` z mechanizmem publikacji raportu przez Git. Pięć testów lokalnych mechanizmu: PASS. Dane Windows pozostają niepotwierdzone do chwili otrzymania raportu ze zgodnym źródłowym SHA; brak raportu nie jest dowodem powodzenia ani niepowodzenia buildu.
+
+## Pulser i zegar — kolejny przyrost
+
+Zatrzymany transport HOST wyłącza również bramkę jawnie podłączonego pulsera. FREE START uruchamia zegar pulsera także w trybie MIDI, bez uruchamiania generatora nut. Rdzeń: 44 sprawdzenia PASS; CTest Linux: 2/2 PASS; ASan/UBSan/LSan: 44 PASS (`evidence/asan-clock-fix.txt`). Obiekty silnika w testach są alokowane przed badaniem realtime na stercie, aby cały zestaw nie zależał od dużego stosu domyślnego w Linux — test callbacku nadal potwierdza brak alokacji DSP.
+
+Workflow uzyskał okresowe, ograniczone raporty postępu przez zatwierdzoną gałąź Git oraz checkpointy po kompilacji i walidacji. Siedem testów infrastruktury raportowania przechodzi lokalnie, w tym propagacja kodu błędu i raport brakującego programu. Nie oznacza to jeszcze PASS trwającego uruchomienia Windows.

@@ -90,7 +90,8 @@ public:
   const bool midi=s.mode==Mode::midi||s.mode==Mode::hybrid||s.mode==Mode::manual;
   const bool gen=(s.mode==Mode::generative||s.mode==Mode::hybrid)&&(s.hostSync?transport.valid&&transport.playing:s.run);
   const double bpm=s.hostSync?transport.bpm:std::clamp(double(s.tempo),20.,300.);
-  const double beat=s.hostSync?transport.beat+offset*bpm/(60*rate):freeBeat;
+  const bool clockActive=s.hostSync?transport.valid&&transport.playing:s.run;
+  const double beat=s.hostSync?transport.beat+(clockActive?offset*bpm/(60*rate):0):freeBeat;
   const int division=std::clamp(s.division,1,128);
   const double grid=beat*division;const auto step=static_cast<int64_t>(std::floor(grid));
   const double frac=grid-std::floor(grid);const uint32_t key=static_cast<uint32_t>(step)^static_cast<uint32_t>(s.seed);
@@ -111,8 +112,8 @@ public:
   v[idx(Port::generativeGate)]=gg;
   v[idx(Port::random)]=unit(key+31)*2-1;
   v[idx(Port::sequence)]=s.steps[static_cast<uint64_t>(step)%5]/60.f;
-  v[idx(Port::pulse)]=frac<.1?1.f:0.f;
-  v[idx(Port::envelope)]=static_cast<float>(std::exp(-frac*8));
+  v[idx(Port::pulse)]=clockActive&&frac<.1?1.f:0.f;
+  v[idx(Port::envelope)]=clockActive?static_cast<float>(std::exp(-frac*8)):0.f;
   // Noise is indexed by audio sample, independent of callback block sizes.
   v[idx(Port::noise)]=unit(static_cast<uint32_t>(frame)^static_cast<uint32_t>(s.seed))*2-1;
   const auto input=[&](Port p){return graph.input(p,v);};
@@ -133,7 +134,7 @@ public:
    case 7:v[idx(Port::output)]=(input(Port::outL)+input(Port::outR))*.5f;break;
    default:break;
   }
-  ++frame;if(gen&&!s.hostSync)freeBeat+=bpm/(60*rate);
+  ++frame;if(clockActive&&!s.hostSync)freeBeat+=bpm/(60*rate);
   expectedBeat=transport.beat+(offset+1)*transport.bpm/(60*rate);
   const auto safe=[&](float x){return std::isfinite(x)?std::clamp(x*smoothLevel,-.98f,.98f):0.f;};
   return {safe(input(Port::outL)),safe(input(Port::outR))};

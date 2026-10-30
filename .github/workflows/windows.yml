@@ -15,12 +15,16 @@ jobs:
     concurrency:
       group: voltage-garden-windows-${{ github.ref }}
       cancel-in-progress: false
+    env:
+      GARDEN_CI_PROGRESS: "1"
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - name: Publish build started
         if: github.event_name != 'pull_request'
         continue-on-error: true
         run: python scripts/publish-ci-status.py running
+      - name: Test CI reporting and command exit codes
+        run: python scripts/ci-command.py out/ci/reporting-tests.log python -m unittest discover -s tests -p test_ci_reporting.py -v
       - name: Pin CMake
         shell: pwsh
         run: |
@@ -34,6 +38,12 @@ jobs:
       - name: Compile VST3, standalone and tests
         id: build
         run: pwsh -NoLogo -NoProfile -File scripts/windows-command.ps1 scripts/ci-command.py out/ci/build.log cmake --build --preset windows
+      - name: Publish compiled checkpoint
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        env:
+          REPORT_STEPS: ${{ toJSON(steps) }}
+        run: python scripts/publish-ci-status.py compiled
       - name: Run DSP and processor tests
         id: tests
         shell: pwsh
@@ -54,6 +64,12 @@ jobs:
         run: |
           python scripts/ci-command.py out/ci/validator.log out/pluginval-build/pluginval_artefacts/Release/pluginval.exe --strictness-level 5 --validate "${{ github.workspace }}/build/windows/VoltageGarden_artefacts/Release/VST3/Voltage Garden.vst3" --output-dir "${{ github.workspace }}/out/validation"
           if ($LASTEXITCODE -ne 0) { throw 'pluginval failed' }
+      - name: Publish validated checkpoint
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        env:
+          REPORT_STEPS: ${{ toJSON(steps) }}
+        run: python scripts/publish-ci-status.py validated
       - name: ZIP, Inno installer and SHA256
         id: package
         run: python scripts/ci-command.py out/ci/package.log pwsh -NoLogo -NoProfile -File scripts/package.ps1
