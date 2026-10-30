@@ -49,3 +49,8 @@ Wysłano gałąź `codex/voltage-garden-implementation`; odczyt `git ls-remote` 
 Naprawiono zachowanie velocity przy powrocie do poprzedniej przytrzymanej nuty i ochronę przed wskrzeszeniem nuty przez powtórzony Note Off przy sustainie. Nowe testy regresji przechodzą; rdzeń ma 42 sprawdzenia. Ponowiona kompilacja Linux i CTest: 2/2 PASS. ASan/UBSan/LSan: 42 PASS. Dowody: `evidence/ctest-midi-fix.txt`, `evidence/asan-midi-fix.txt`. Starszy provenance.json nadal opisuje poprzedni przyrost 40-testowy.
 
 Przygotowano lokalnie dodatkowy mechanizm raportowania wyniku Windows poprzez osobną gałąź Git, z pięcioma testami na lokalnych repozytoriach. **Nie wysłano tej zmiany workflow.** Automatyczna kontrola odrzuciła publikację uprawnienia `contents:write` bez wyraźnej zgody użytkownika. Zgoda na tę konkretną możliwość zapisu jest wymagana przed wysłaniem zmiany; sam brak dostępu do API nie upoważnia do podniesienia uprawnień. Pozostałe poprawki MIDI nie wymagają tego uprawnienia.
+
+
+## Zgoda na raportowanie CI
+
+Użytkownik wyraźnie zatwierdził `contents:write` do raportów Windows. Wysłano commit `47dbc3f` z mechanizmem publikacji raportu przez Git. Pięć testów lokalnych mechanizmu: PASS. Dane Windows pozostają niepotwierdzone do chwili otrzymania raportu ze zgodnym źródłowym SHA; brak raportu nie jest dowodem powodzenia ani niepowodzenia buildu.
