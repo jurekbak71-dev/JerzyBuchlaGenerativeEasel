@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "producer": "voltage-garden-windows-ci",
-  "phase": "running",
+  "phase": "progress/configure",
   "head_sha": "6bc9c361dfa1af6bfcb3174aa9f22d3b0ba0e5e5",
   "run_id": "41121061580",
   "run_attempt": "1",
@@ -9,5 +9,5 @@
   "artifact_url": "",
   "artifact_id": "",
   "steps": {},
-  "updated_at": "2026-10-30T20:11:28.700364+00:00"
+  "updated_at": "2026-10-30T20:12:27.189834+00:00"
 }
