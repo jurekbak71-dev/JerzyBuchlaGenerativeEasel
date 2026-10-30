@@ -52,7 +52,7 @@ class Engine {
  Oscillator osc, mod; LPG lpgA,lpgB;
  std::array<float,portCount> v{};
  std::array<std::array<float,8192>,3> delays{}; size_t write=0;
- std::array<bool,128> held{}, sustained{}; std::array<uint64_t,128> ages{};uint64_t age=0;
+ std::array<bool,128> held{}, sustained{}; std::array<float,128> velocities{}; std::array<uint64_t,128> ages{};uint64_t age=0;
  bool pedal=false; int note=60;float velocity=0,bend=0,pressure=0,wheel=0;
  float smoothLevel=0,smoothFold=0; uint64_t frame=0;
  Settings s{}; Transport transport{}; Graph graph=Graph::normal();
@@ -63,9 +63,9 @@ public:
   osc={};mod={};lpgA={};lpgB={};v.fill(0);for(auto& d:delays)d.fill(0);write=0;
   allNotesOff();bend=pressure=wheel=0;age=0;freeBeat=0;expectedBeat=0;expectedValid=false;wasPlaying=false;frame=0;smoothLevel=0;smoothFold=0;
  }
- void allNotesOff()noexcept {held.fill(false);sustained.fill(false);ages.fill(0);pedal=false;velocity=0;}
- void noteOn(int n,float vel)noexcept {if(n<0||n>127)return;if(vel<=0){noteOff(n);return;}held[n]=true;sustained[n]=false;ages[n]=++age;note=n;velocity=std::clamp(vel,0.f,1.f);}
- void noteOff(int n)noexcept {if(n>=0&&n<128){held[n]=false;sustained[n]=pedal&&ages[n]>0;}}
+ void allNotesOff()noexcept {held.fill(false);sustained.fill(false);ages.fill(0);velocities.fill(0);pedal=false;velocity=0;}
+ void noteOn(int n,float vel)noexcept {if(n<0||n>127||!std::isfinite(vel))return;if(vel<=0){noteOff(n);return;}held[n]=true;sustained[n]=false;ages[n]=++age;note=n;velocity=std::clamp(vel,0.f,1.f);velocities[n]=velocity;}
+ void noteOff(int n)noexcept {if(n>=0&&n<128&&held[n]){held[n]=false;sustained[n]=pedal;}}
  void sustain(bool on)noexcept{pedal=on;if(!on)sustained.fill(false);}
  void pitchBend(float normalized)noexcept{bend=std::clamp(normalized,-1.f,1.f)*2;}
  void aftertouch(float p)noexcept{pressure=std::clamp(p,0.f,1.f);}
@@ -86,7 +86,7 @@ public:
   wasPlaying=t.playing;expectedValid=t.valid&&t.playing;
  }
  std::array<float,2> sample(int offset)noexcept {
-  const auto activeNote=selectedNote();if(activeNote>=0)note=activeNote;
+  const auto activeNote=selectedNote();if(activeNote>=0){note=activeNote;velocity=velocities[activeNote];}
   const bool midi=s.mode==Mode::midi||s.mode==Mode::hybrid||s.mode==Mode::manual;
   const bool gen=(s.mode==Mode::generative||s.mode==Mode::hybrid)&&(s.hostSync?transport.valid&&transport.playing:s.run);
   const double bpm=s.hostSync?transport.bpm:std::clamp(double(s.tempo),20.,300.);

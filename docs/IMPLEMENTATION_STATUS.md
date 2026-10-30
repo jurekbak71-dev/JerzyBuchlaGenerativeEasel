@@ -42,3 +42,10 @@ Zapisano szkic `install_script`, `start_skill` oraz dodatkowe domeny sieciowe. A
 Wysłano gałąź `codex/voltage-garden-implementation`; odczyt `git ls-remote` potwierdził zdalny commit [`77f9cb282a24d234970ee5ecce5ae7dd1f46a75c`](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/commit/77f9cb282a24d234970ee5ecce5ae7dd1f46a75c). Ten commit obejmuje przetestowaną implementację i workflow. Po push ponowiono `gh run list --branch codex/voltage-garden-implementation`: odpowiedź `Forbidden`, więc stan uruchomienia i obecność artefaktów pozostają nieznane, a nie FAIL lub PASS kompilacji. Nie wykonano merge do main ani publikacji Release.
 
  [Actions](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/workflows/windows.yml). Link jest miejscem uruchomień, nie potwierdzeniem artefaktu. Nie ma jeszcze zweryfikowanego URL pobierania Windows ani Release.
+
+
+## Wznowienie — obsługa MIDI i dostęp do CI
+
+Naprawiono zachowanie velocity przy powrocie do poprzedniej przytrzymanej nuty i ochronę przed wskrzeszeniem nuty przez powtórzony Note Off przy sustainie. Nowe testy regresji przechodzą; rdzeń ma 42 sprawdzenia. Ponowiona kompilacja Linux i CTest: 2/2 PASS. ASan/UBSan/LSan: 42 PASS. Dowody: `evidence/ctest-midi-fix.txt`, `evidence/asan-midi-fix.txt`. Starszy provenance.json nadal opisuje poprzedni przyrost 40-testowy.
+
+Przygotowano lokalnie dodatkowy mechanizm raportowania wyniku Windows poprzez osobną gałąź Git, z pięcioma testami na lokalnych repozytoriach. **Nie wysłano tej zmiany workflow.** Automatyczna kontrola odrzuciła publikację uprawnienia `contents:write` bez wyraźnej zgody użytkownika. Zgoda na tę konkretną możliwość zapisu jest wymagana przed wysłaniem zmiany; sam brak dostępu do API nie upoważnia do podniesienia uprawnień. Pozostałe poprawki MIDI nie wymagają tego uprawnienia.

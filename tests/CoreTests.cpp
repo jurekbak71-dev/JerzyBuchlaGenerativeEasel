@@ -62,6 +62,17 @@ int main(){
  Engine loop;loop.prepare(48000);Settings midiSettings;loop.begin(midiSettings,{true,0,120,true});loop.noteOn(60,1);for(int i=0;i<256;++i)loop.sample(i);
  loop.begin(midiSettings,{true,0,120,true});float afterLoop=0;for(int i=0;i<256;++i)afterLoop+=std::abs(loop.sample(i)[0]);check(afterLoop==0,"timeline loop clears stale MIDI gate");
  Engine malformed;malformed.prepare(NAN);malformed.begin(s,{true,1.e300,INFINITY,true});bool guarded=true;for(int i=0;i<100;++i){auto x=malformed.sample(i);guarded &= std::isfinite(x[0])&&std::isfinite(x[1]);}check(guarded,"invalid sample rate and extreme host timeline guarded");
+ Engine priority,reference;priority.prepare(48000);reference.prepare(48000);Settings plain;plain.wet=0;
+ priority.begin(plain,{});reference.begin(plain,{});priority.noteOn(60,.2f);reference.noteOn(60,.2f);priority.noteOn(64,1.f);
+ for(int i=0;i<100;++i){priority.sample(i);}
+ priority.noteOff(64);
+ double fallbackEnergy=0,referenceEnergy=0;
+ for(int i=0;i<48000;++i){auto x=priority.sample(i)[0],y=reference.sample(i)[0];if(i>24000){fallbackEnergy+=x*x;referenceEnergy+=y*y;}}
+ check(std::abs(fallbackEnergy/referenceEnergy-1)<.05,"last-note fallback restores original velocity");
+ Engine duplicate;duplicate.prepare(48000);duplicate.begin(plain,{});duplicate.noteOn(60,1);for(int i=0;i<1000;++i)duplicate.sample(i);
+ duplicate.noteOff(60);duplicate.sustain(true);duplicate.noteOff(60);double duplicateTail=0;
+ for(int i=0;i<96000;++i){auto x=duplicate.sample(i)[0];if(i>90000)duplicateTail+=std::abs(x);}
+ check(duplicateTail<.001,"duplicate NoteOff cannot resurrect a released note under sustain");
  auto start=std::chrono::steady_clock::now();render(256,s,48000,patched,48000*5);double sec=std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();
  std::cout<<"BENCHMARK 5 seconds audio / "<<sec<<" seconds compute (not host CPU measurement)\n";
  std::cout<<"RESULT "<<checks<<" checks passed\n";

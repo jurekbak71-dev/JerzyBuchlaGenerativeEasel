@@ -1,0 +1,44 @@
+PASS audio cable accepted
+PASS unsafe gate/audio conversion rejected
+PASS zero delay feedback rejected
+PASS failed edit leaves graph intact
+PASS fan out accepted
+PASS multiple input sources accepted
+PASS duplicate rejected
+PASS NaN gain rejected
+PASS 100000 concurrent mailbox publications remain valid
+PASS MIDI mode does not self start
+PASS host synced generator produces audio without MIDI
+PASS offline/block size deterministic render bit exact
+PASS seed changes musical/audio output
+PASS empty graph is silent: graph controls output
+PASS FM cable added
+PASS adding modulation cable changes rendered audio
+PASS muting oscillator cable silences audio path
+PASS MIDI note creates sound
+PASS A4 oscillator frequency 440 Hz
+PASS sustain holds released note
+PASS sustain release decays without stuck note
+PASS FREE clock requires explicit start
+PASS FREE start produces audio
+PASS finite bounded stress 44100 / 32
+PASS finite bounded stress 44100 / 64
+PASS finite bounded stress 44100 / 256
+PASS finite bounded stress 44100 / 1024
+PASS finite bounded stress 48000 / 32
+PASS finite bounded stress 48000 / 64
+PASS finite bounded stress 48000 / 256
+PASS finite bounded stress 48000 / 1024
+PASS finite bounded stress 96000 / 32
+PASS finite bounded stress 96000 / 64
+PASS finite bounded stress 96000 / 256
+PASS finite bounded stress 96000 / 1024
+PASS DSP begin, graph swap and 48000 samples allocate no heap
+PASS LPG attenuates high frequency relative to VCA
+PASS LPG preserves bass relative to treble
+PASS timeline loop clears stale MIDI gate
+PASS invalid sample rate and extreme host timeline guarded
+PASS last-note fallback restores original velocity
+PASS duplicate NoteOff cannot resurrect a released note under sustain
+BENCHMARK 5 seconds audio / 0.870782 seconds compute (not host CPU measurement)
+RESULT 42 checks passed
