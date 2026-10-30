@@ -1,54 +1,13 @@
 {
   "schema": 1,
   "producer": "voltage-garden-windows-ci",
-  "phase": "cancelled",
-  "head_sha": "8ef6ce5904e2dd231f6b1884a4c19631a2996caa",
-  "run_id": "41119714434",
+  "phase": "running",
+  "head_sha": "6bc9c361dfa1af6bfcb3174aa9f22d3b0ba0e5e5",
+  "run_id": "41121061580",
   "run_attempt": "1",
-  "run_url": "https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41119714434",
+  "run_url": "https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41121061580",
   "artifact_url": "",
   "artifact_id": "",
-  "steps": {
-    "configure": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "build": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "tests": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "gui": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "validator": {
-      "outputs": {},
-      "outcome": "skipped",
-      "conclusion": "skipped"
-    },
-    "package": {
-      "outputs": {},
-      "outcome": "skipped",
-      "conclusion": "skipped"
-    },
-    "package_check": {
-      "outputs": {},
-      "outcome": "skipped",
-      "conclusion": "skipped"
-    },
-    "artifacts": {
-      "outputs": {},
-      "outcome": "skipped",
-      "conclusion": "skipped"
-    }
-  },
-  "updated_at": "2026-10-30T20:11:07.948199+00:00"
+  "steps": {},
+  "updated_at": "2026-10-30T20:11:28.700364+00:00"
 }
