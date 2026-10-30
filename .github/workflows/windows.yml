@@ -14,7 +14,7 @@ jobs:
       contents: write
     concurrency:
       group: voltage-garden-windows-${{ github.ref }}
-      cancel-in-progress: false
+      cancel-in-progress: true
     env:
       GARDEN_CI_PROGRESS: "1"
     steps:
