@@ -4,4 +4,8 @@
 [3/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\src\Plugin.cpp.obj
 [4/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\src\Editor.cpp.obj
 [5/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_processors\juce_audio_processors.cpp.obj
-[6/69] Building CXX obje
+[6/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_gui_extra\juce_gui_extra.cpp.obj
+[7/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_graphics\juce_graphics.cpp.obj
+[8/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_gui_basics\juce_gui_basics.cpp.obj
+[9/69] Building C object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_graphics\juce_graphics_Sheenbidi.c.obj
+[10/69] Building CXX object CMak
