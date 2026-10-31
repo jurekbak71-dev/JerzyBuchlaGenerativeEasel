@@ -1,0 +1,6 @@
+{
+  "tool": "actionlint 1.7.7",
+  "workflow_sha256": "79822b27e1508c68f97a8520de22cc1bd427490756d4f532f312b0b9050c0c1b",
+  "source_commit": "9834437278e8ac0b2156ab6e2fec54c52b021646",
+  "result": "PASS"
+}

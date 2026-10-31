@@ -12,3 +12,16 @@ Nie publikuj wydania produkcyjnego, dopóki brakujące kryteria w IMPLEMENTATION
 
 
 Preset Windows używa Ninja Multi-Config i jawnego kompilatora `cl`. `scripts/windows-command.ps1` aktywuje zainstalowany MSVC x64 przez oficjalny VisualStudio.DevShell, bez założenia wersji Visual Studio. Zmiana wynika z rzeczywistego błędu runnera: Visual Studio 17 2022 nie było zainstalowane. Po pakowaniu `scripts/verify-package.ps1` sprawdza ZIP i źródła, uruchamia EXE w trybie silent do katalogu tymczasowego, porównuje SHA256 z oryginalną wtyczką i uruchamia uninstaller.
+
+## Dodatkowe sprawdzenie skalowania 200% (Linux)
+
+`tests/GuiScaleProbe.cpp` uruchomiono z już zbudowaną biblioteką wtyczki na Xvfb/xfwm4. Edytor ma 2640×1600; drag z fizycznych współrzędnych gniazd aktualizuje graf, a klawiatura przy powiększeniu produkuje audio. Dowód: `docs/evidence/gui-scale-200.txt` i `docs/screenshots/panel-200.png`. Nie jest to test DPI Windows ani porównanie z niedostępną makietą.
+
+Z katalogu repo, po `source scripts/cloud-env.sh` i standardowym buildzie Linux:
+
+```sh
+g++ -std=c++20 -O2 -Isrc -I.cache/JUCE/modules -DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1 -DJUCE_WEB_BROWSER=0 -DJUCE_USE_CURL=0 tests/GuiScaleProbe.cpp 'build/linux/VoltageGarden_artefacts/Release/libVoltage Garden_SharedCode.a' -lasound -lfontconfig -lfreetype -lrt -ldl -pthread -o .cache/scale-probe
+DISPLAY=:100 .cache/scale-probe
+```
+
+Ekran `:100` musi być wcześniej uruchomiony przez `DISPLAY=:100 bash scripts/gui-test.sh`.

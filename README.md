@@ -2,8 +2,8 @@
 
 Autorski instrument VST3 dla Windows x64 inspirowany filozofią Buchla Music Easel / serii 100 i 200. **To nie jest oficjalny produkt Buchla ani deklaracja wiernej emulacji 208C.**
 
-## Status (2026-10-30)
-- **Skompilowany i przetestowany przyrost Linux VST3/standalone — pełny produkt nadal nieukończony.** Windows VST3, instalator i ZIP nie mają jeszcze potwierdzonych wyników CI.
+## Status (2026-10-31)
+- **VST3 Windows x64 został skompilowany przez MSVC i przeszedł CTest/GUI; Linux ma również test pluginval. Pełny produkt nadal jest nieukończony.** Windows pluginval, instalator i ZIP wymagają zakończenia nowego uruchomienia CI — odnośnik pobierania nie jest jeszcze potwierdzony.
 - Kierunek GUI z wizualizacji w rozmowie zaakceptowany; interaktywny patching wirtualnymi kabelkami jest wymogiem obowiązkowym.
 - Autorska nazwa UI: **Voltage Garden**. Działają audio/MIDI, podstawowy generator, stan hosta i rzeczywisty graf kabli. Pozostające wymagania i blokady: [IMPLEMENTATION_STATUS](docs/IMPLEMENTATION_STATUS.md).
 - Budowanie: [BUILD](docs/BUILD.md); obsługa: [instrukcja PL](docs/MANUAL_PL.md); dowody: [screenshots](docs/screenshots/), [testy](docs/evidence/).
