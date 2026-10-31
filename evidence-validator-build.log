@@ -57,4 +57,8 @@ Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc
 [13/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\Validator.cpp.obj
 [14/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_devices\juce_audio_devices.cpp.obj
 [15/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_basics\juce_audio_basics.cpp.obj
-[16/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\mod
+[16/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_core\juce_core_CompilationTime.cpp.obj
+[17/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_events\juce_events.cpp.obj
+[18/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_core\juce_core.cpp.obj
+[19/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_processors\juce_audio_processors_ara.cpp.obj
+[20/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_processo
