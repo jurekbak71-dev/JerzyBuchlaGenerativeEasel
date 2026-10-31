@@ -44,4 +44,10 @@
 [43/69] Linking CXX executable "VoltageGarden_artefacts\Release\Standalone\Voltage Garden.exe"
 [44/69] Generating garden_integration_artefacts/JuceLibraryCode/garden_integration_resources.rc
 [45/69] Building CXX object CMakeFiles\garden_integration.dir\Release\tests\PluginTests.cpp.obj
-[46/69] Building CXX object CMakeFiles\VoltageGarden_VST3.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_pl
+[46/69] Building CXX object CMakeFiles\VoltageGarden_VST3.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_VST3.cpp.obj
+[47/69] Linking CXX shared module "VoltageGarden_artefacts\Release\VST3\Voltage Garden.vst3\Contents\x86_64-win\Voltage Garden.vst3"
+removing moduleinfo.json
+creating D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/windows/VoltageGarden_artefacts/Release/VST3/Voltage Garden.vst3
+[48/69] Building CXX object CMakeFiles\garden_integration.dir\Release\src\Plugin.cpp.obj
+[49/69] Building CXX object CMakeFiles\garden_integration.dir\Release\src\Editor.cpp.obj
+[50/69] Buil
