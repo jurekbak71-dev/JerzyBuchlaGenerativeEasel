@@ -32,12 +32,50 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw 'CMake install failed' }
           python -c "import cmake; print(cmake.CMAKE_BIN_DIR)" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
           python -c "import ninja; print(ninja.BIN_DIR)" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Identify runner image
+        id: image
+        shell: pwsh
+        run: '"version=$env:ImageVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append'
+      - name: Restore pinned validator tool
+        if: steps.image.outputs.version != ''
+        id: validator_cache
+        uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684
+        with:
+          path: |
+            out/pluginval
+            out/pluginval-build
+          key: vg-pluginval-v1-${{ steps.image.outputs.version }}-ed19c2c-chrono
+      - name: Build pinned pluginval
+        run: pwsh -NoLogo -NoProfile -File scripts/windows-command.ps1 scripts/ci-command.py out/ci/validator-build.log pwsh -NoLogo -NoProfile -File scripts/build-validator.ps1
+      - name: Preserve successfully compiled validator
+        if: steps.image.outputs.version != '' && steps.validator_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@5a3ec84eff668545956fd18022155c47e93e2684
+        with:
+          path: |
+            out/pluginval
+            out/pluginval-build
+          key: vg-pluginval-v1-${{ steps.image.outputs.version }}-ed19c2c-chrono
+      - name: Restore verified instrument build outputs
+        if: steps.image.outputs.version != ''
+        id: instrument_cache
+        uses: actions/cache/restore@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
+        with:
+          path: build/windows
+          key: vg-win-v1-${{ steps.image.outputs.version }}-${{ hashFiles('CMakeLists.txt', 'CMakePresets.json') }}-${{ github.sha }}
+          restore-keys: |
+            vg-win-v1-${{ steps.image.outputs.version }}-${{ hashFiles('CMakeLists.txt', 'CMakePresets.json') }}-
       - name: Configure MSVC x64
         id: configure
         run: pwsh -NoLogo -NoProfile -File scripts/windows-command.ps1 scripts/ci-command.py out/ci/configure.log cmake --preset windows
       - name: Compile VST3, standalone and tests
         id: build
         run: pwsh -NoLogo -NoProfile -File scripts/windows-command.ps1 scripts/ci-command.py out/ci/build.log cmake --build --preset windows
+      - name: Preserve successful instrument compilation
+        if: steps.image.outputs.version != '' && steps.instrument_cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@5a3ec84eff668545956fd18022155c47e93e2684
+        with:
+          path: build/windows
+          key: vg-win-v1-${{ steps.image.outputs.version }}-${{ hashFiles('CMakeLists.txt', 'CMakePresets.json') }}-${{ github.sha }}
       - name: Publish compiled checkpoint
         if: github.event_name != 'pull_request'
         continue-on-error: true
@@ -56,8 +94,6 @@ jobs:
         run: python scripts/ci-command.py out/ci/gui.log "build/windows/garden_integration_artefacts/Release/garden_integration.exe" --screenshots
       - name: Verify offline WAV file export
         run: python scripts/ci-command.py out/ci/audio.log "build/windows/garden_integration_artefacts/Release/garden_integration.exe" --audio
-      - name: Build pinned pluginval
-        run: pwsh -NoLogo -NoProfile -File scripts/windows-command.ps1 scripts/ci-command.py out/ci/validator-build.log pwsh -NoLogo -NoProfile -File scripts/build-validator.ps1
       - name: Validate actual VST3
         id: validator
         shell: pwsh

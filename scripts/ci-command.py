@@ -57,7 +57,7 @@ def run_logged(log):
             output.write(message)
             sys.stderr.buffer.write(message)
             return 127
-        for chunk in iter(lambda: process.stdout.read(4096), b''):
+        for chunk in iter(lambda: process.stdout.read1(4096), b''):
             output.write(chunk)
             output.flush()
             sys.stdout.buffer.write(chunk)

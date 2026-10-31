@@ -1,0 +1,9 @@
+Test project /workspace/JerzyBuchlaGenerativeEasel/build/linux
+    Start 1: core
+1/2 Test #1: core .............................   Passed    2.17 sec
+    Start 2: plugin_integration
+2/2 Test #2: plugin_integration ...............   Passed    0.10 sec
+
+100% tests passed, 0 tests failed out of 2
+
+Total Test time (real) =   2.27 sec

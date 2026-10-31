@@ -53,7 +53,7 @@ class Engine {
  std::array<float,portCount> v{};
  std::array<std::array<float,8192>,3> delays{}; size_t write=0;
  std::array<bool,128> held{}, sustained{}; std::array<float,128> velocities{}; std::array<uint64_t,128> ages{};uint64_t age=0;
- bool pedal=false; int note=60;float velocity=0,bend=0,pressure=0,wheel=0;
+ bool pedal=false; int note=48;float velocity=0,bend=0,pressure=0,wheel=0;
  float smoothLevel=0,smoothFold=0; uint64_t frame=0;
  Settings s{}; Transport transport{}; Graph graph=Graph::normal();
  int selectedNote()const noexcept {uint64_t newest=0;int n=-1;for(int i=0;i<128;++i)if((held[i]||sustained[i])&&ages[i]>=newest){newest=ages[i];n=i;}return n;}
@@ -61,7 +61,7 @@ public:
  void prepare(double sampleRate)noexcept {rate=std::isfinite(sampleRate)?std::clamp(sampleRate,8000.,192000.):48000.; reset();}
  void reset()noexcept {
   osc={};mod={};lpgA={};lpgB={};v.fill(0);for(auto& d:delays)d.fill(0);write=0;
-  allNotesOff();bend=pressure=wheel=0;age=0;freeBeat=0;expectedBeat=0;expectedValid=false;wasPlaying=false;frame=0;smoothLevel=0;smoothFold=0;
+  allNotesOff();note=48;bend=pressure=wheel=0;age=0;freeBeat=0;expectedBeat=0;expectedValid=false;wasPlaying=false;frame=0;smoothLevel=0;smoothFold=0;
  }
  void allNotesOff()noexcept {held.fill(false);sustained.fill(false);ages.fill(0);velocities.fill(0);pedal=false;velocity=0;}
  void noteOn(int n,float vel)noexcept {if(n<0||n>127||!std::isfinite(vel))return;if(vel<=0){noteOff(n);return;}held[n]=true;sustained[n]=false;ages[n]=++age;note=n;velocity=std::clamp(vel,0.f,1.f);velocities[n]=velocity;}
@@ -104,7 +104,7 @@ public:
   if(s.mode==Mode::hybrid&&activeNote>=0)genNote+=note%12-s.root;
   const double swing=(step&1)?std::clamp(s.swing,0.f,.45f):0;
   float gg=gen&&frac>=swing&&frac<swing+.40+unit(key+2)*.13&&unit(key)<s.density?(.55f+.4f*unit(key+4)):0;
-  v[idx(Port::midiPitch)]=midi&&activeNote>=0?static_cast<float>((note-48+bend)/60.):0;
+  v[idx(Port::midiPitch)]=midi?static_cast<float>((note-48+bend)/60.):0;
   v[idx(Port::generativePitch)]=gen?static_cast<float>((genNote-48)/60.):0;
   // HYBRID uses generator pitch with MIDI as harmonic context, rather than summing two pitches.
   if(s.mode==Mode::hybrid)v[idx(Port::midiPitch)]=0;

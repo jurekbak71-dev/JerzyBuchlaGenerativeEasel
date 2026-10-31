@@ -60,3 +60,12 @@ Użytkownik wyraźnie zatwierdził `contents:write` do raportów Windows. Wysła
 Zatrzymany transport HOST wyłącza również bramkę jawnie podłączonego pulsera. FREE START uruchamia zegar pulsera także w trybie MIDI, bez uruchamiania generatora nut. Rdzeń: 44 sprawdzenia PASS; CTest Linux: 2/2 PASS; ASan/UBSan/LSan: 44 PASS (`evidence/asan-clock-fix.txt`). Obiekty silnika w testach są alokowane przed badaniem realtime na stercie, aby cały zestaw nie zależał od dużego stosu domyślnego w Linux — test callbacku nadal potwierdza brak alokacji DSP.
 
 Workflow uzyskał okresowe, ograniczone raporty postępu przez zatwierdzoną gałąź Git oraz checkpointy po kompilacji i walidacji. Siedem testów infrastruktury raportowania przechodzi lokalnie, w tym propagacja kodu błędu i raport brakującego programu. Nie oznacza to jeszcze PASS trwającego uruchomienia Windows.
+
+
+## 2026-10-31 — rzeczywiste wyniki Windows i naprawa narzędzia
+
+Uruchomienie `41121061580`, źródła `6bc9c361dfa1af6bfcb3174aa9f22d3b0ba0e5e5`: kompilacja VST3 x64 MSVC 19.51 PASS; CTest 2/2 PASS (44 sprawdzenia rdzenia); prawdziwy GUI/drag kabla PASS; WAV stereo 24-bit i odczyt kontrolny PASS. Dowody są w `evidence/windows-msvc-44/`. Cały run FAIL na kompilacji narzędzia pluginval 1.0.4: C3688 dla literału `100ms`, brak jawnego nagłówka `<chrono>` przy nowym MSVC. Walidacja bundla, instalator i ZIP nie zostały wtedy wykonane.
+
+Poprawka narzędzia używa CMake project hook i `/FIchrono`, zachowuje domyślne flagi MSVC i wszystkie testy; nie zmienia upstream ani nie wyłącza walidacji. Udane kompilacje są teraz zachowywane w cache przypiętym do obrazu runnera i konfiguracji. Narzędzie jest sprawdzane przed kosztownym buildem wtyczki.
+
+Naprawiono ponadto rzeczywisty błąd ogona MIDI Note Off: pitch CV trzyma ostatnią nutę zamiast przechodzić do domyślnego C podczas release. Nowy test początkowo FAIL, po poprawce PASS. Lokalnie 45 sprawdzeń rdzenia i ASan/UBSan/LSan PASS, CTest Linux 2/2 PASS. Źródła nowego przyrostu wymagają ponownej pełnej weryfikacji Windows.

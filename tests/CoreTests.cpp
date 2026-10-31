@@ -81,6 +81,10 @@ int main(){
  auto freePulserStorage=std::make_unique<Engine>();auto& freePulser=*freePulserStorage;freePulser.prepare(48000);freePulser.setGraph(pulserPatch);pulseSettings.hostSync=false;pulseSettings.run=true;pulseSettings.tempo=120;freePulser.begin(pulseSettings,{});
  double pulseOn=0,pulseGap=0;for(int i=0;i<4800;++i){auto x=freePulser.sample(i)[0];if(i<480)pulseOn+=x*x;if(i>=2880)pulseGap+=x*x;}
  check(pulseOn>.001&&pulseGap<pulseOn*.001,"explicit FREE clock drives pulser in MIDI mode and releases between pulses");
+ auto releaseStorage=std::make_unique<Engine>();auto& release=*releaseStorage;release.prepare(48000);Settings tailSettings;tailSettings.wet=0;tailSettings.timbre=0;tailSettings.decay=1;tailSettings.cutoff=20000;
+ release.begin(tailSettings,{});release.noteOn(69,1);for(int i=0;i<4800;++i){release.sample(i);}release.noteOff(69);
+ int tailCrossings=0;float previousTail=0;for(int i=0;i<19200;++i){float x=release.sample(i)[0];if(i>=4800&&i<14400&&previousTail<=0&&x>0)++tailCrossings;previousTail=x;}
+ check(std::abs(tailCrossings-88)<=2,"NoteOff release tail preserves A4 pitch instead of jumping to default C");
  auto start=std::chrono::steady_clock::now();render(256,s,48000,patched,48000*5);double sec=std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count();
  std::cout<<"BENCHMARK 5 seconds audio / "<<sec<<" seconds compute (not host CPU measurement)\n";
  std::cout<<"RESULT "<<checks<<" checks passed\n";
