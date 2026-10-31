@@ -61,4 +61,9 @@ Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc
 [17/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_events\juce_events.cpp.obj
 [18/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_core\juce_core.cpp.obj
 [19/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_processors\juce_audio_processors_ara.cpp.obj
-[20/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_processo
+[20/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_processors\juce_audio_processors_lv2_libs.cpp.obj
+[21/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_processors\juce_audio_processors.cpp.obj
+D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types/juce_VST3PluginFormat.cpp(744): warning C4458: declaration of 'iid' hides class member
+D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces/vst/ivsteditcontroller.h(235): note: see declaration of 'Steinberg::Vst::IComponentHandler::iid'
+D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types/juce_VST3PluginFormat.cpp(780): warning C4458: declaration of 'iid' hides class member
+D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces/vst/ivsteditc
