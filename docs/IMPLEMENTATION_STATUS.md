@@ -2,6 +2,8 @@
 
 **Projekt pozostaje wersją rozwojową, nie spełnia pełnego MASTER_PROMPT. Nie ma jeszcze potwierdzonego instalatora ani ZIP Windows do pobrania.**
 
+**Potwierdzona blokada zewnętrzna: rozliczenia konta GitHub.** Właściciel odczytał adnotację dla uruchomienia `41187716045`, job `124497917710`: "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings". Nie jest to wynik kompilacji. Nie zwiększano limitów, nie inicjowano płatności ani nie zmieniano widoczności repozytorium. Dalsze próby CI wstrzymano do rozwiązania blokady przez właściciela konta.
+
 ## Co rzeczywiście sprawdzono
 
 | Obszar | Wynik i źródło dowodu |
@@ -25,13 +27,13 @@ Naprawiono velocity poprzedniej przytrzymanej nuty, powtórzony Note Off pod sus
 
 Poprawka kompilacji pluginval używa jawnego dołączenia standardowego `<chrono>` przez `/FIchrono` i CMake project hook. Zachowuje domyślne flagi MSVC i wszystkie testy; nie modyfikuje upstream i nie wyłącza walidacji. Cache poprawnie skompilowanych wyników przygotowano, ale po szybkich awariach przed pierwszym krokiem wyłączono go diagnostycznie. Pozostaje pełne budowanie i wszystkie wymagane testy.
 
-Zmiany wysłano jako `f4e0dd9787dc9b50c0b83f6f5e6d8ef5aaa7f6ba`; zdarzenie CI ponowiono przez commit `9834437278e8ac0b2156ab6e2fec54c52b021646`. Dla obu nie otrzymano jeszcze raportu startowego. **Nie wiadomo, czy uruchomienie oczekuje w kolejce, wymaga akcji właściciela czy nie wystartowało.** Brak raportu nie jest wynikiem testu.
+Zmiany wysłano jako `f4e0dd9787dc9b50c0b83f6f5e6d8ef5aaa7f6ba`; zdarzenie CI ponowiono przez commit `9834437278e8ac0b2156ab6e2fec54c52b021646`. Dla obu nie otrzymano jeszcze raportu startowego. **Późniejsza adnotacja dostarczona przez właściciela potwierdziła, że job nie wystartował z powodu płatności/limitu konta.** Brak raportu nie jest wynikiem testu.
 
 ## Dostęp do CI
 
 API Actions odpowiada `Forbidden`. Po wyraźnej zgodzie użytkownika workflow ma `contents:write` do publikowania ograniczonych raportów na osobnej gałęzi `codex/windows-build-status`. Ten kanał działał i dostarczył powyższe rzeczywiste logi Windows. Nie wymaga proszenia o token w czacie ani zmiany repozytoriów referencyjnych.
 
-Do diagnozy braku nowego raportu potrzebny jest komunikat widoczny przy najnowszym uruchomieniu na [liście Actions tej gałęzi](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions?query=branch%3Acodex%2Fvoltage-garden-implementation). Nie twierdzimy bez dowodu, że problemem jest billing, kolejka lub zatwierdzenie.
+Właściciel dostarczył komunikat z [jobu Windows](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41187716045/job/124497917710), który potwierdza blokadę Billing & plans. Po jej usunięciu należy ponowić aktualny workflow i odebrać raport ze zgodnym SHA. Nie należy ponawiać w kółko zablokowanych uruchomień ani traktować ich jako błędu DSP.
 
 ## Zakres i pozostałe wymagania
 
@@ -45,3 +47,6 @@ Nie wykonano merge do main ani Release. Nie ma zweryfikowanego URL artefaktu Win
 ## Diagnoza na podstawie obrazu użytkownika
 
 Zrzut listy Actions potwierdził, że próby `f4e0dd9` i `9834437` faktycznie zakończyły się błędem po 3–4 sekundach. Nie były potwierdzoną kolejką. Nie otrzymano raportu startowego ani komunikatu przyczyny. Zewnętrzna akcja cache była jedyną nowo dodaną akcją `uses` od ostatniego runu, który wykonał kompilację i testy. Jej SHA i manifesty zweryfikowano w oficjalnym repozytorium; w ramach izolacji problemu tymczasowo usunięto ją z workflow. Kompilacja, testy, pluginval i weryfikacja pakowania nie są pomijane. Potwierdzenie przyczyny wymaga komunikatu Annotations albo wyniku próby izolującej.
+
+
+Potwierdzona przyczyna rozliczeniowa oznacza, że wcześniejsza hipoteza o cache nie została potwierdzona. Akcja cache pozostaje obecnie wyłączona diagnostycznie; wszystkie wymagane kompilacje i testy są w workflow. Przed odblokowaniem konta nie deklarujemy weryfikacji poprawki nagłówka pluginval na Windows ani powstania EXE/ZIP.
