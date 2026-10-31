@@ -18,3 +18,9 @@ Preset CMake variables:
 -- Detecting CXX compile features - done
 -- Configuring juceaide
 -- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Configuring done (139.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/windows
