@@ -15,4 +15,26 @@
 [14/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_graphics\juce_graphics_Harfbuzz.cpp.obj
 [15/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_processors_headless\juce_audio_processors_headless_ara.cpp.obj
 [16/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_processors_headless\juce_audio_processors_headless_lv2_libs.cpp.obj
-[17/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\
+[17/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_processors_headless\juce_audio_processors_headless.cpp.obj
+[18/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_basics\juce_audio_basics.cpp.obj
+[19/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_utils\juce_audio_utils.cpp.obj
+[20/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_formats\juce_audio_formats.cpp.obj
+[21/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_devices\juce_audio_devices.cpp.obj
+[22/69] Building CXX object CMakeFiles\VoltageGarden.dir\Release\_deps\juce-src\modules\juce_dsp\juce_dsp.cpp.obj
+[23/69] Linking CXX static library "VoltageGarden_artefacts\Release\Voltage Garden_SharedCode.lib"
+[24/69] Generating VoltageGarden_artefacts/JuceLibraryCode/VoltageGarden_resources.rc
+[25/69] Building CXX object CMakeFiles\VoltageGarden_Standalone.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_AAX.cpp.obj
+[26/69] Building CXX object CMakeFiles\VoltageGarden_Standalone.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_AAX_utils.cpp.obj
+[27/69] Building CXX object CMakeFiles\VoltageGarden_Standalone.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_ARA.cpp.obj
+[28/69] Building CXX object CMakeFiles\VoltageGarden_Standalone.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_LV2.cpp.obj
+[29/69] Building CXX object CMakeFiles\VoltageGarden_vst3_helper.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\VST3\juce_VST3ManifestHelper.cpp.obj
+[30/69] Building CXX object CMakeFiles\VoltageGarden_Standalone.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_Unity.cpp.obj
+[31/69] Building CXX object CMakeFiles\VoltageGarden_Standalone.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_VST2.cpp.obj
+[32/69] Building CXX object CMakeFiles\VoltageGarden_Standalone.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_VST3.cpp.obj
+[33/69] Building RC object CMakeFiles\VoltageGarden_rc_lib.dir\Release\VoltageGarden_artefacts\JuceLibraryCode\VoltageGarden_resources.rc.res
+[34/69] Linking CXX executable Release\VoltageGarden_vst3_helper.exe
+[35/69] Building CXX object CMakeFiles\VoltageGarden_VST3.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_AAX.cpp.obj
+[36/69] Building CXX object CMakeFiles\VoltageGarden_VST3.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_AAX_utils.cpp.obj
+[37/69] Building CXX object CMakeFiles\VoltageGarden_VST3.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_ARA.cpp.obj
+[38/69] Building CXX object CMakeFiles\VoltageGarden_VST3.dir\Release\_deps\juce-src\modules\juce_audio_plugin_client\juce_audio_plugin_client_LV2.cpp.obj
+[39/69] Building CXX object CMakeFile
