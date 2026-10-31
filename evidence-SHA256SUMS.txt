@@ -1,0 +1,2 @@
+f833016730a5dbbaeb30a5df02fa4056be08fb4b6606e1e099a0625a18c2d39b  VoltageGarden-0.1.0-Windows-x64-Setup.exe
+c1e80cf57602981913c85c3bf61a4c83a0e460bab3d3c994a92e46413a19cd64  VoltageGarden-0.1.0-Windows-x64.zip
