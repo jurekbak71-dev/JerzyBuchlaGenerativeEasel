@@ -23,7 +23,7 @@
 
 Naprawiono velocity poprzedniej przytrzymanej nuty, powtórzony Note Off pod sustainem, zatrzymanie pulsera z HOST, działanie zegara FREE niezależnie od trybu generatora oraz skok wysokości ogona do domyślnego C po Note Off. Test ostatniego błędu najpierw rzeczywiście FAIL, po poprawce PASS.
 
-Poprawka kompilacji pluginval używa jawnego dołączenia standardowego `<chrono>` przez `/FIchrono` i CMake project hook. Zachowuje domyślne flagi MSVC i wszystkie testy; nie modyfikuje upstream i nie wyłącza walidacji. Dodano cache poprawnie skompilowanych wyników, przypięty do obrazu runnera i konfiguracji.
+Poprawka kompilacji pluginval używa jawnego dołączenia standardowego `<chrono>` przez `/FIchrono` i CMake project hook. Zachowuje domyślne flagi MSVC i wszystkie testy; nie modyfikuje upstream i nie wyłącza walidacji. Cache poprawnie skompilowanych wyników przygotowano, ale po szybkich awariach przed pierwszym krokiem wyłączono go diagnostycznie. Pozostaje pełne budowanie i wszystkie wymagane testy.
 
 Zmiany wysłano jako `f4e0dd9787dc9b50c0b83f6f5e6d8ef5aaa7f6ba`; zdarzenie CI ponowiono przez commit `9834437278e8ac0b2156ab6e2fec54c52b021646`. Dla obu nie otrzymano jeszcze raportu startowego. **Nie wiadomo, czy uruchomienie oczekuje w kolejce, wymaga akcji właściciela czy nie wystartowało.** Brak raportu nie jest wynikiem testu.
 
@@ -40,3 +40,8 @@ Działają: rzeczywisty typowany graf audio/CV/gate/clock, fan-out i ograniczone
 Pozostają do realizacji lub weryfikacji: pełne niezależne głosy bass/ambient/rytm, style, Krell/Markov/Euclidean/random walk i rozwój fraz; S&H/slew i pełne niezależne moduły pulse/envelope; AM/PM, ring modulation, kolory szumu; analiza aliasingu i lepsza decymacja; pełny EXPERT, MIDI Learn, dostępna z klawiatury edycja kabli, glide/pressure UI; osobne pole stereo, kontrola tails i pomiary CPU w hoście. Brak MPE oraz zewnętrznego MIDI OUT. Automatyzacja jest blokowa. Seek resetuje DSP zamiast rekonstruować poprzedni ogon. Instalator nie jest podpisany Authenticode.
 
 Nie wykonano merge do main ani Release. Nie ma zweryfikowanego URL artefaktu Windows. Starsza [historia](BUILD_HISTORY.md) dokumentuje kolejne etapy i wcześniejsze, już rozwiązane blokady; nie zastępuje powyższego aktualnego stanu.
+
+
+## Diagnoza na podstawie obrazu użytkownika
+
+Zrzut listy Actions potwierdził, że próby `f4e0dd9` i `9834437` faktycznie zakończyły się błędem po 3–4 sekundach. Nie były potwierdzoną kolejką. Nie otrzymano raportu startowego ani komunikatu przyczyny. Zewnętrzna akcja cache była jedyną nowo dodaną akcją `uses` od ostatniego runu, który wykonał kompilację i testy. Jej SHA i manifesty zweryfikowano w oficjalnym repozytorium; w ramach izolacji problemu tymczasowo usunięto ją z workflow. Kompilacja, testy, pluginval i weryfikacja pakowania nie są pomijane. Potwierdzenie przyczyny wymaga komunikatu Annotations albo wyniku próby izolującej.
