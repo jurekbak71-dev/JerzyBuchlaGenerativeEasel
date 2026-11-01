@@ -5,6 +5,12 @@
 #include <vector>
 #include <stdexcept>
 #include <set>
+#if JUCE_WINDOWS
+ #ifndef NOMINMAX
+  #define NOMINMAX
+ #endif
+ #include <windows.h>
+#endif
 void require(bool b,const char* message){if(!b)throw std::runtime_error(message);std::cout<<"PASS "<<message<<'\n';}
 void set(GardenProcessor& p,const char* id,float value){auto* v=p.state.getParameter(id);v->setValueNotifyingHost(v->convertTo0to1(value));}
 struct Playhead:juce::AudioPlayHead {
@@ -13,6 +19,38 @@ struct Playhead:juce::AudioPlayHead {
 };
 std::vector<float> render(int block){GardenProcessor p;Playhead head;p.setPlayHead(&head);p.prepareToPlay(48000,block);set(p,"mode",2);std::vector<float> out;
  for(int n=0;n<48000;n+=block){const int count=std::min(block,48000-n);head.beat=n/24000.;juce::AudioBuffer<float> b(2,count);juce::MidiBuffer m;p.processBlock(b,m);out.insert(out.end(),b.getReadPointer(0),b.getReadPointer(0)+count);}return out;}
+juce::Image captureHostedEditor(juce::Component& editor){
+#if JUCE_WINDOWS
+ // A window DC with WS_CLIPCHILDREN excludes the native VST3 child. Capture the
+ // visible desktop rectangle instead, including the actual plugin window.
+ auto window=static_cast<HWND>(editor.getPeer()->getNativeHandle());
+ RECT client{};POINT origin{};
+ if(!GetClientRect(window,&client)||!ClientToScreen(window,&origin))return {};
+ const int width=client.right-client.left,height=client.bottom-client.top;
+ if(width<=0||height<=0)return {};
+ const auto screen=GetDC(nullptr);if(!screen)return {};
+ const auto dc=CreateCompatibleDC(screen);
+ BITMAPINFO info{};info.bmiHeader.biSize=sizeof(BITMAPINFOHEADER);
+ info.bmiHeader.biWidth=width;info.bmiHeader.biHeight=-height;
+ info.bmiHeader.biPlanes=1;info.bmiHeader.biBitCount=32;info.bmiHeader.biCompression=BI_RGB;
+ void* pixels=nullptr;const auto bitmap=CreateDIBSection(screen,&info,DIB_RGB_COLORS,&pixels,nullptr,0);
+ juce::Image result;
+ if(dc&&bitmap&&pixels){
+  const auto previous=SelectObject(dc,bitmap);
+  if(BitBlt(dc,0,0,width,height,screen,origin.x,origin.y,SRCCOPY|CAPTUREBLT)){
+   GdiFlush();
+   result=juce::Image(juce::Image::RGB,width,height,true);juce::Image::BitmapData target(result,juce::Image::BitmapData::writeOnly);
+   const auto* source=static_cast<const juce::uint32*>(pixels);
+   for(int y=0;y<height;++y)for(int x=0;x<width;++x)target.setPixelColour(x,y,juce::Colour(source[y*width+x]|0xff000000u));
+  }
+  SelectObject(dc,previous);
+ }
+ if(bitmap)DeleteObject(bitmap);if(dc)DeleteDC(dc);ReleaseDC(nullptr,screen);
+ return result;
+#else
+ return juce::createSnapshotOfNativeWindow(editor.getPeer()->getNativeHandle());
+#endif
+}
 int main(int argc,char** argv){
  try{
  juce::ScopedJuceInitialiser_GUI init;
@@ -73,8 +111,8 @@ int main(int argc,char** argv){
   require(block.getMagnitude(0,128)>0,"loaded VST3 renders MIDI audio");
   juce::MemoryBlock saved;instance->getStateInformation(saved);require(saved.getSize()>0,"loaded VST3 saves state");instance->setStateInformation(saved.getData(),int(saved.getSize()));
   auto window=std::unique_ptr<juce::AudioProcessorEditor>(instance->createEditor());require(window!=nullptr,"loaded VST3 creates editor");
-  window->setVisible(false);window->addToDesktop(juce::ComponentPeer::windowIsTemporary);window->getPeer()->setCurrentRenderingEngine(0);window->setVisible(true);juce::MessageManager::getInstance()->runDispatchLoopUntil(200);
-  auto image=juce::createSnapshotOfNativeWindow(window->getPeer()->getNativeHandle());
+  window->setVisible(false);window->addToDesktop(juce::ComponentPeer::windowIsTemporary);window->getPeer()->setCurrentRenderingEngine(0);window->setTopLeftPosition(0,0);window->setVisible(true);window->toFront(true);juce::MessageManager::getInstance()->runDispatchLoopUntil(400);
+  auto image=captureHostedEditor(*window);
   require(image.isValid(),"loaded native VST3 window snapshot is valid");
   std::set<juce::uint32> colours;for(int y=0;y<image.getHeight();y+=16)for(int x=0;x<image.getWidth();x+=16)colours.insert(image.getPixelAt(x,y).getARGB());
   require(colours.size()>20,"loaded VST3 screenshot contains rendered controls");
