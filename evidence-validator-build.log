@@ -52,4 +52,9 @@ Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc
 [8/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\PluginTests.cpp.obj
 [9/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\tests\BasicTests.cpp.obj
 [10/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\tests\BusTests.cpp.obj
-[11/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\tests\ParameterFuzzTests.cpp
+[11/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\tests\ParameterFuzzTests.cpp.obj
+[12/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\TestUtilities.cpp.obj
+[13/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\Validator.cpp.obj
+[14/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_devices\juce_audio_devices.cpp.obj
+[15/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_basics\juce_audio_basics.cpp.obj
+[16/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\mod
