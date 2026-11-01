@@ -66,4 +66,13 @@ Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc
 D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types/juce_VST3PluginFormat.cpp(744): warning C4458: declaration of 'iid' hides class member
 D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces/vst/ivsteditcontroller.h(235): note: see declaration of 'Steinberg::Vst::IComponentHandler::iid'
 D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types/juce_VST3PluginFormat.cpp(780): warning C4458: declaration of 'iid' hides class member
-D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces/vst/ivsteditc
+D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\pluginval\modules\juce\modules\juce_audio_processors\format_types\VST3_SDK\pluginterfaces/vst/ivsteditcontroller.h(235): note: see declaration of 'Steinberg::Vst::IComponentHandler::iid'
+[22/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_gui_extra\juce_gui_extra.cpp.obj
+[23/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_graphics\juce_graphics.cpp.obj
+[24/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_gui_basics\juce_gui_basics.cpp.obj
+[25/30] Building C object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_graphics\juce_graphics_Sheenbidi.c.obj
+[26/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_data_structures\juce_data_structures.cpp.obj
+[27/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_utils\juce_audio_utils.cpp.obj
+[28/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_audio_formats\juce_audio_formats.cpp.obj
+[29/30] Building CXX object CMakeFiles\pluginval.dir\Release\modules\juce\modules\juce_graphics\juce_graphics_Harfbuzz.cpp.obj
+[30/30] Linking CXX executable pluginval_artefacts\Release\pluginval.exe
