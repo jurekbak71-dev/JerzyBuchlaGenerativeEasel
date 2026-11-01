@@ -47,4 +47,9 @@ Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc
 [3/30] Generating pluginval_artefacts/JuceLibraryCode/JuceHeader.h
 [4/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\CrashHandler.cpp.obj
 [5/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\CommandLine.cpp.obj
-[6/30] Building CXX obj
+[6/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\Main.cpp.obj
+[7/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\MainComponent.cpp.obj
+[8/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\PluginTests.cpp.obj
+[9/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\tests\BasicTests.cpp.obj
+[10/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\tests\BusTests.cpp.obj
+[11/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\tests\ParameterFuzzTests.cpp
