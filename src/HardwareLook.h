@@ -6,7 +6,7 @@ class GardenHardwareLook final : public juce::LookAndFeel_V4 {
 public:
  juce::Font getLabelFont(juce::Label& label) override {
   if(auto* slider=dynamic_cast<juce::Slider*>(label.getParentComponent()))
-   if(slider->getName()=="SEED")return juce::Font(juce::FontOptions(9));
+   return juce::Font(juce::FontOptions(slider->getName()=="SEED"?9.f:11.f));
   return LookAndFeel_V4::getLabelFont(label);
  }
  void drawRotarySlider(juce::Graphics& g,int x,int y,int width,int height,float position,float start,float end,juce::Slider& slider) override {

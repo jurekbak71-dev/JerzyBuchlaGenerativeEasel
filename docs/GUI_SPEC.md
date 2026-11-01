@@ -2,7 +2,7 @@
 
 Użytkownik dostarczył w rozmowie zdjęcie fizycznego Music Easel (345×250) i następnie jednoznacznie wybrał: **„Docelowy wygląd GUI — odwzoruj układ i proporcje”**. Ta fotografia zastępuje dotychczasowy nieokreślony kierunek jako docelowa referencja kompozycji. Plik nie jest automatycznie dostępny na dysku; nie podajemy nieistniejącej lokalnej ścieżki ani licencji do reprodukcji fotografii.
 
-Implementacja 0.2: szeroka jasna górna płyta z jednym bankiem 20 długich suwaków, zwarta lewa sekcja precyzyjnych gałek i wyświetlacza, prawa kolumna niebieskich gałek oraz czerwony PANIC. Dolna sekcja: ciemna płyta marki Jerzy po lewej, niebieski pas gniazd i czerwony panel kontaktowej klawiatury po prawej. Logiczny rozmiar 1320×920, proporcja zachowywana; zakres 70–200%. Nie kopiujemy logo Buchla ani zdjęcia jako tła. Wszystkie suwaki i gniazda działają z istniejącym DSP, presetami i stanem hosta.
+Implementacja 0.2: szeroka jasna górna płyta z jednym bankiem 20 długich suwaków, zwarta lewa sekcja precyzyjnych gałek i wyświetlacza, prawa kolumna niebieskich gałek oraz czerwony PANIC. Klawiatura ma 29 działających kontaktów (C3–E5 w bazowej oktawie). Dolna sekcja: ciemna płyta marki Jerzy po lewej, niebieski pas gniazd i czerwony panel kontaktowej klawiatury po prawej. Logiczny rozmiar 1320×920, proporcja zachowywana; zakres 70–200%. Nie kopiujemy logo Buchla ani zdjęcia jako tła. Wszystkie suwaki i gniazda działają z istniejącym DSP, presetami i stanem hosta.
 
 Odtwarzamy układ i proporcje widoczne na zdjęciu; drobny druk i nieczytelne pozycje gałek nie są deklarowane jako wiernie odczytane. Nazwy kontrolek odpowiadają rzeczywistym funkcjom Jerzy.
 

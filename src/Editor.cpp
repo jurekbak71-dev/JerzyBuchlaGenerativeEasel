@@ -7,7 +7,8 @@ struct Lane {const char* id;const char* label;};
 constexpr Lane lanes[]={{"tune","PITCH"},{"timbre","TIMBRE"},{"fold","FOLD"},{"modRate","MOD Hz"},{"fm","FM"},{"decay","DECAY"},{"cutoff","CUTOFF"},{"tempo","BPM"},{"swing","SWING"},{"division","DIVISION"},{"density","DENSITY"},{"motion","MOTION"},{"seed","SEED"},{"wet","SPRING"},{"level","LEVEL"},{"step1","STEP 1"},{"step2","STEP 2"},{"step3","STEP 3"},{"step4","STEP 4"},{"step5","STEP 5"}};
 constexpr garden::Port upperOutputs[]={garden::Port::osc,garden::Port::mod,garden::Port::noise,garden::Port::lpg1,garden::Port::lpg2,garden::Port::mix,garden::Port::reverb,garden::Port::output};
 constexpr garden::Port controllerOutputs[]={garden::Port::random,garden::Port::sequence,garden::Port::pulse,garden::Port::envelope,garden::Port::midiPitch,garden::Port::midiGate,garden::Port::generativePitch,garden::Port::generativeGate};
-constexpr float keyLeft=294,keyPitch=40,keyTop=612,keyBottom=866;
+constexpr int keyCount=29;
+constexpr float keyLeft=294,keyPitch=960.f/keyCount,keyTop=612,keyBottom=866;
 bool accidental(int note){return std::array<bool,12>{false,true,false,true,false,false,true,false,true,false,true,false}[note%12];}
 void screw(juce::Graphics& g,float x,float y){g.setColour(juce::Colour(0xff555b56));g.fillEllipse(x-4,y-4,8,8);g.setColour(juce::Colour(0xffdbddd4));g.fillEllipse(x-3,y-3,6,6);g.setColour(juce::Colour(0xff68706a));g.drawLine(x-2,y+1,x+2,y-1,1);}
 }
@@ -78,11 +79,11 @@ void GardenEditor::paint(juce::Graphics& g){
  g.setColour(juce::Colour(0xff1b2427));g.fillRect(26,490,232,394);g.setColour(juce::Colour(0xff0e1416));g.drawRect(32,496,220,382,1);
  g.setColour(blue);g.fillRect(270,490,1024,108);g.setColour(juce::Colour(0xffd6a9ab));g.drawLine(272,552,1292,552,1);
  g.setColour(red);g.fillRect(270,598,1024,286);g.setColour(juce::Colour(0xffdfc8b8));g.setFont(juce::FontOptions(11).withStyle("Bold"));g.drawText("JERZY TOUCH CONTROLLER",696,562,570,24,juce::Justification::centred);
- for(int i=0;i<24;++i){const float x=keyLeft+i*keyPitch;const bool sharp=accidental(i+baseNote),active=i+baseNote==heldNote;
-  g.setColour(juce::Colour(0xff76232e));g.drawRect(x-2,608.f,39.f,263.f,1.f);
-  g.setGradientFill(juce::ColourGradient(active?juce::Colour(0xffffd591):juce::Colour(0xffe4e1d5),x,670,active?juce::Colour(0xffd39b58):juce::Colour(0xffa7adac),x+34,860,false));g.fillRect(x+4,670.f,27.f,190.f);
-  g.setColour(active?juce::Colour(0xffffe6ad):juce::Colour(0xffd7dddc));g.fillRect(x+4,sharp?615.f:643.f,27.f,sharp?38.f:15.f);
-  g.setColour(juce::Colour(0xff6f7774));g.drawRect(x+4,670.f,27.f,190.f,1.f);g.setColour(juce::Colour(0xfff0d9c9));g.setFont(juce::FontOptions(9));g.drawText(juce::MidiMessage::getMidiNoteName(i+baseNote,true,true,4),int(x)-2,sharp?655:615,39,20,juce::Justification::centred);
+ for(int i=0;i<keyCount;++i){const float x=keyLeft+i*keyPitch;const bool sharp=accidental(i+baseNote),active=i+baseNote==heldNote;
+  g.setColour(juce::Colour(0xff76232e));g.drawRect(x-2,608.f,keyPitch-1,263.f,1.f);
+  g.setGradientFill(juce::ColourGradient(active?juce::Colour(0xffffd591):juce::Colour(0xffe4e1d5),x,670,active?juce::Colour(0xffd39b58):juce::Colour(0xffa7adac),x+34,860,false));g.fillRect(x+4,670.f,keyPitch-13,190.f);
+  g.setColour(active?juce::Colour(0xffffe6ad):juce::Colour(0xffd7dddc));g.fillRect(x+4,sharp?615.f:643.f,keyPitch-13,sharp?38.f:15.f);
+  g.setColour(juce::Colour(0xff6f7774));g.drawRect(x+4,670.f,keyPitch-13,190.f,1.f);g.setColour(juce::Colour(0xfff0d9c9));g.setFont(juce::FontOptions(9));g.drawText(juce::MidiMessage::getMidiNoteName(i+baseNote,true,true,4),int(x)-2,sharp?655:615,int(keyPitch)-1,20,juce::Justification::centred);
  }
  const auto graph=processor.patch();
  for(int i=0;i<garden::portCount;++i){const auto point=jacks[i];const auto& info=garden::ports[i];g.setColour(juce::Colour(0xff666e65));g.fillEllipse(point.x-8,point.y-8,16,16);g.setColour(juce::Colour(0xffe6e5d7));g.drawEllipse(point.x-8,point.y-8,16,16,1);g.setColour(jackColour(info.kind));g.fillEllipse(point.x-6,point.y-6,12,12);g.setColour(juce::Colour(0xff26322c));g.fillEllipse(point.x-2,point.y-2,4,4);
@@ -108,9 +109,9 @@ void GardenEditor::mouseDown(const juce::MouseEvent& e){
  if(const int note=keyAt(pos);note>=0){releaseKey();heldNote=note;processor.uiNote(heldNote,110);repaint();}
 }
 int GardenEditor::keyAt(juce::Point<float> p)const {
- if(p.y<keyTop||p.y>=keyBottom||p.x<keyLeft||p.x>=keyLeft+24*keyPitch)return -1;
+ if(p.y<keyTop||p.y>=keyBottom||p.x<keyLeft||p.x>=keyLeft+keyCount*keyPitch)return -1;
  const int key=int((p.x-keyLeft)/keyPitch);
- return p.x-(keyLeft+key*keyPitch)<35?baseNote+key:-1;
+ return p.x-(keyLeft+key*keyPitch)<keyPitch-5?baseNote+key:-1;
 }
 void GardenEditor::releaseKey(){if(heldNote>=0){processor.uiNote(heldNote,0);heldNote=-1;}}
 void GardenEditor::mouseDrag(const juce::MouseEvent& e){

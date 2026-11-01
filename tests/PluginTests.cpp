@@ -96,14 +96,17 @@ int main(int argc,char** argv){
   require(shapeKnob&&std::abs(shapeKnob->getValue()-.8)<.00001,"fine knob follows same host parameter");
   // Exercise the touch keyboard against the actual processor, including release outside it.
   p.factory(0);p.processBlock(b,m);p.prepareToPlay(48000,128);
-  editor->mouseDown(event({311,750}));p.processBlock(b,m);require(b.getMagnitude(0,128)>0,"GUI touch key produces audio");
-  editor->mouseDrag(event({351,750}));p.processBlock(b,m);
+  editor->mouseDown(event({309,750}));p.processBlock(b,m);require(b.getMagnitude(0,128)>0,"GUI touch key produces audio");
+  editor->mouseDrag(event({342,750}));p.processBlock(b,m);
   juce::AudioBuffer<float> expected(2,128);GardenProcessor reference;reference.factory(0);reference.processBlock(expected,m);reference.prepareToPlay(48000,128);reference.uiNote(48,110);reference.processBlock(expected,m);reference.uiNote(48,0);reference.uiNote(49,110);
   reference.processBlock(expected,m);
   require(std::equal(b.getReadPointer(0),b.getReadPointer(0)+128,expected.getReadPointer(0)),"GUI slide releases old key and plays new pitch");
   editor->mouseDrag(event({10,630}));p.processBlock(b,m);editor->mouseUp(event({10,630}));
   for(int n=0;n<4000;++n)p.processBlock(b,m);
   require(b.getMagnitude(0,128)<.00001f,"GUI drag outside leaves no held note");
+  p.prepareToPlay(48000,128);editor->mouseDown(event({1236,750}));p.processBlock(b,m);
+  GardenProcessor lastKey;lastKey.factory(0);lastKey.processBlock(expected,m);lastKey.prepareToPlay(48000,128);lastKey.uiNote(76,110);lastKey.processBlock(expected,m);
+  require(std::equal(b.getReadPointer(0),b.getReadPointer(0)+128,expected.getReadPointer(0)),"29th touch contact plays E5 through DSP");editor->mouseUp(event({1236,750}));
   editor->removeFromDesktop();
  }
  if(argc>2&&juce::String(argv[1])=="--validate"){
