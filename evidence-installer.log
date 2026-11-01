@@ -1,0 +1,550 @@
+﻿2026-11-01 16:48:07.578   Log opened. (Time zone: UTC+00:00)
+2026-11-01 16:48:07.578   Setup version: Inno Setup version 6.7.1
+2026-11-01 16:48:07.578   Original Setup EXE: D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\release\JerzyVoltageGarden-0.2.0-Windows-x64-Setup.exe
+2026-11-01 16:48:07.578   Setup command line: /SL5="$A0078,4324790,893952,D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\release\JerzyVoltageGarden-0.2.0-Windows-x64-Setup.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /DIR="D:\a\_temp\JerzyVoltageGarden-installed-41327400349" /LOG="D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\out\ci\installer.log"
+2026-11-01 16:48:07.578   Windows version: 10.0.26100
+2026-11-01 16:48:07.578   Windows architecture: x64 (64-bit)
+2026-11-01 16:48:07.578   Machine types supported by system: x86 x64
+2026-11-01 16:48:07.578   User privileges: Administrative
+2026-11-01 16:48:07.579   Administrative install mode: Yes
+2026-11-01 16:48:07.579   Install mode root key: HKEY_LOCAL_MACHINE
+2026-11-01 16:48:07.579   64-bit install mode: Yes
+2026-11-01 16:48:07.579   RedirectionGuard status for current process: Enabled in enforcing mode
+2026-11-01 16:48:07.581   Created protected temporary directory: C:\Users\RUNNER~1\AppData\Local\Temp\is-OOFDGFA6QA.tmp
+2026-11-01 16:48:08.446   Found 0 files to register with RestartManager.
+2026-11-01 16:48:08.493   Starting the installation process.
+2026-11-01 16:48:08.494   Creating directory: D:\a\_temp\JerzyVoltageGarden-installed-41327400349
+2026-11-01 16:48:08.495   Directory for uninstall files: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\Uninstall
+2026-11-01 16:48:08.495   Creating directory: C:\ProgramData\Jerzy Audio
+2026-11-01 16:48:08.495   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden
+2026-11-01 16:48:08.496   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\Uninstall
+2026-11-01 16:48:08.496   Creating new uninstall log: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\Uninstall\unins000.dat
+2026-11-01 16:48:08.551   -- File entry --
+2026-11-01 16:48:08.551   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\Uninstall\unins000.exe
+2026-11-01 16:48:08.551   Non-default bitness: 32-bit
+2026-11-01 16:48:08.767   Time stamp of our file: 2026-11-01 16:48:07.180
+2026-11-01 16:48:08.767   Installing the file.
+2026-11-01 16:48:08.779   Successfully installed the file.
+2026-11-01 16:48:08.779   -- File entry --
+2026-11-01 16:48:08.781   Dest filename: D:\a\_temp\JerzyVoltageGarden-installed-41327400349\Jerzy Voltage Garden.vst3\Contents\Resources\moduleinfo.json
+2026-11-01 16:48:08.785   Time stamp of our file: 2026-11-01 16:45:38.000
+2026-11-01 16:48:08.785   Installing the file.
+2026-11-01 16:48:08.785   Creating directory: D:\a\_temp\JerzyVoltageGarden-installed-41327400349\Jerzy Voltage Garden.vst3
+2026-11-01 16:48:08.785   Creating directory: D:\a\_temp\JerzyVoltageGarden-installed-41327400349\Jerzy Voltage Garden.vst3\Contents
+2026-11-01 16:48:08.785   Creating directory: D:\a\_temp\JerzyVoltageGarden-installed-41327400349\Jerzy Voltage Garden.vst3\Contents\Resources
+2026-11-01 16:48:08.785   Successfully installed the file.
+2026-11-01 16:48:08.785   -- File entry --
+2026-11-01 16:48:08.787   Dest filename: D:\a\_temp\JerzyVoltageGarden-installed-41327400349\Jerzy Voltage Garden.vst3\Contents\x86_64-win\Jerzy Voltage Garden.vst3
+2026-11-01 16:48:08.787   Time stamp of our file: 2026-11-01 16:45:38.000
+2026-11-01 16:48:08.787   Installing the file.
+2026-11-01 16:48:08.787   Creating directory: D:\a\_temp\JerzyVoltageGarden-installed-41327400349\Jerzy Voltage Garden.vst3\Contents\x86_64-win
+2026-11-01 16:48:08.878   Successfully installed the file.
+2026-11-01 16:48:08.878   -- File entry --
+2026-11-01 16:48:08.878   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\ACCEPTANCE.md
+2026-11-01 16:48:08.878   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.878   Installing the file.
+2026-11-01 16:48:08.878   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs
+2026-11-01 16:48:08.879   Successfully installed the file.
+2026-11-01 16:48:08.879   -- File entry --
+2026-11-01 16:48:08.879   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\ARCHITECTURE.md
+2026-11-01 16:48:08.879   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.879   Installing the file.
+2026-11-01 16:48:08.880   Successfully installed the file.
+2026-11-01 16:48:08.880   -- File entry --
+2026-11-01 16:48:08.880   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\BUILD.md
+2026-11-01 16:48:08.880   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.880   Installing the file.
+2026-11-01 16:48:08.880   Successfully installed the file.
+2026-11-01 16:48:08.880   -- File entry --
+2026-11-01 16:48:08.880   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\BUILD_HISTORY.md
+2026-11-01 16:48:08.881   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.881   Installing the file.
+2026-11-01 16:48:08.883   Successfully installed the file.
+2026-11-01 16:48:08.883   -- File entry --
+2026-11-01 16:48:08.883   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\EXISTING_REPOS.md
+2026-11-01 16:48:08.883   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.883   Installing the file.
+2026-11-01 16:48:08.884   Successfully installed the file.
+2026-11-01 16:48:08.884   -- File entry --
+2026-11-01 16:48:08.884   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\GUI_SPEC.md
+2026-11-01 16:48:08.884   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.884   Installing the file.
+2026-11-01 16:48:08.884   Successfully installed the file.
+2026-11-01 16:48:08.884   -- File entry --
+2026-11-01 16:48:08.884   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\IMPLEMENTATION_STATUS.md
+2026-11-01 16:48:08.884   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.884   Installing the file.
+2026-11-01 16:48:08.886   Successfully installed the file.
+2026-11-01 16:48:08.886   -- File entry --
+2026-11-01 16:48:08.886   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\MANUAL_PL.md
+2026-11-01 16:48:08.886   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.886   Installing the file.
+2026-11-01 16:48:08.886   Successfully installed the file.
+2026-11-01 16:48:08.886   -- File entry --
+2026-11-01 16:48:08.886   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\MASTER_PROMPT.md
+2026-11-01 16:48:08.886   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.886   Installing the file.
+2026-11-01 16:48:08.887   Successfully installed the file.
+2026-11-01 16:48:08.888   -- File entry --
+2026-11-01 16:48:08.888   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\RESEARCH.md
+2026-11-01 16:48:08.888   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.888   Installing the file.
+2026-11-01 16:48:08.888   Successfully installed the file.
+2026-11-01 16:48:08.888   -- File entry --
+2026-11-01 16:48:08.888   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\REUSE_AUDIT.md
+2026-11-01 16:48:08.888   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.888   Installing the file.
+2026-11-01 16:48:08.889   Successfully installed the file.
+2026-11-01 16:48:08.889   -- File entry --
+2026-11-01 16:48:08.889   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\SOURCES.md
+2026-11-01 16:48:08.889   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.889   Installing the file.
+2026-11-01 16:48:08.890   Successfully installed the file.
+2026-11-01 16:48:08.890   -- File entry --
+2026-11-01 16:48:08.890   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\actionlint.json
+2026-11-01 16:48:08.890   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.890   Installing the file.
+2026-11-01 16:48:08.890   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence
+2026-11-01 16:48:08.890   Successfully installed the file.
+2026-11-01 16:48:08.890   -- File entry --
+2026-11-01 16:48:08.890   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\asan-clock-fix.txt
+2026-11-01 16:48:08.891   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.891   Installing the file.
+2026-11-01 16:48:08.892   Successfully installed the file.
+2026-11-01 16:48:08.892   -- File entry --
+2026-11-01 16:48:08.892   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\asan-midi-fix.txt
+2026-11-01 16:48:08.892   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.892   Installing the file.
+2026-11-01 16:48:08.894   Successfully installed the file.
+2026-11-01 16:48:08.894   -- File entry --
+2026-11-01 16:48:08.894   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\asan-release-pitch.txt
+2026-11-01 16:48:08.894   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.894   Installing the file.
+2026-11-01 16:48:08.894   Successfully installed the file.
+2026-11-01 16:48:08.894   -- File entry --
+2026-11-01 16:48:08.894   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\asan-ubsan.txt
+2026-11-01 16:48:08.894   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.894   Installing the file.
+2026-11-01 16:48:08.895   Successfully installed the file.
+2026-11-01 16:48:08.895   -- File entry --
+2026-11-01 16:48:08.895   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\audio.txt
+2026-11-01 16:48:08.895   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.895   Installing the file.
+2026-11-01 16:48:08.896   Successfully installed the file.
+2026-11-01 16:48:08.896   -- File entry --
+2026-11-01 16:48:08.896   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\ctest-clock-fix.txt
+2026-11-01 16:48:08.896   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.896   Installing the file.
+2026-11-01 16:48:08.896   Successfully installed the file.
+2026-11-01 16:48:08.896   -- File entry --
+2026-11-01 16:48:08.896   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\ctest-linux.txt
+2026-11-01 16:48:08.896   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.896   Installing the file.
+2026-11-01 16:48:08.897   Successfully installed the file.
+2026-11-01 16:48:08.898   -- File entry --
+2026-11-01 16:48:08.898   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\ctest-linux.xml
+2026-11-01 16:48:08.898   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.898   Installing the file.
+2026-11-01 16:48:08.898   Successfully installed the file.
+2026-11-01 16:48:08.898   -- File entry --
+2026-11-01 16:48:08.898   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\ctest-midi-fix.txt
+2026-11-01 16:48:08.898   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.898   Installing the file.
+2026-11-01 16:48:08.899   Successfully installed the file.
+2026-11-01 16:48:08.899   -- File entry --
+2026-11-01 16:48:08.899   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\ctest-release-pitch.txt
+2026-11-01 16:48:08.899   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.899   Installing the file.
+2026-11-01 16:48:08.900   Successfully installed the file.
+2026-11-01 16:48:08.900   -- File entry --
+2026-11-01 16:48:08.900   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\generative.wav
+2026-11-01 16:48:08.900   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.900   Installing the file.
+2026-11-01 16:48:08.909   Successfully installed the file.
+2026-11-01 16:48:08.909   -- File entry --
+2026-11-01 16:48:08.909   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\gui-scale-200.txt
+2026-11-01 16:48:08.910   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.910   Installing the file.
+2026-11-01 16:48:08.910   Successfully installed the file.
+2026-11-01 16:48:08.910   -- File entry --
+2026-11-01 16:48:08.910   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\gui.txt
+2026-11-01 16:48:08.910   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.910   Installing the file.
+2026-11-01 16:48:08.910   Successfully installed the file.
+2026-11-01 16:48:08.911   -- File entry --
+2026-11-01 16:48:08.911   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\pluginval-linux.txt
+2026-11-01 16:48:08.911   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.911   Installing the file.
+2026-11-01 16:48:08.912   Successfully installed the file.
+2026-11-01 16:48:08.912   -- File entry --
+2026-11-01 16:48:08.912   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\provenance.json
+2026-11-01 16:48:08.912   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.912   Installing the file.
+2026-11-01 16:48:08.912   Successfully installed the file.
+2026-11-01 16:48:08.912   -- File entry --
+2026-11-01 16:48:08.912   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-first-configure-failure.txt
+2026-11-01 16:48:08.912   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.912   Installing the file.
+2026-11-01 16:48:08.913   Successfully installed the file.
+2026-11-01 16:48:08.913   -- File entry --
+2026-11-01 16:48:08.914   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-audio.txt
+2026-11-01 16:48:08.914   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.914   Installing the file.
+2026-11-01 16:48:08.914   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01
+2026-11-01 16:48:08.914   Successfully installed the file.
+2026-11-01 16:48:08.914   -- File entry --
+2026-11-01 16:48:08.914   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-core-details.txt
+2026-11-01 16:48:08.914   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.914   Installing the file.
+2026-11-01 16:48:08.915   Successfully installed the file.
+2026-11-01 16:48:08.915   -- File entry --
+2026-11-01 16:48:08.915   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-core.txt
+2026-11-01 16:48:08.915   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.915   Installing the file.
+2026-11-01 16:48:08.917   Successfully installed the file.
+2026-11-01 16:48:08.917   -- File entry --
+2026-11-01 16:48:08.917   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-ctest.txt
+2026-11-01 16:48:08.917   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.917   Installing the file.
+2026-11-01 16:48:08.917   Successfully installed the file.
+2026-11-01 16:48:08.917   -- File entry --
+2026-11-01 16:48:08.917   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-gui.txt
+2026-11-01 16:48:08.917   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.917   Installing the file.
+2026-11-01 16:48:08.917   Successfully installed the file.
+2026-11-01 16:48:08.917   -- File entry --
+2026-11-01 16:48:08.917   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-host.txt
+2026-11-01 16:48:08.917   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.917   Installing the file.
+2026-11-01 16:48:08.917   Successfully installed the file.
+2026-11-01 16:48:08.917   -- File entry --
+2026-11-01 16:48:08.919   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-linux.xml
+2026-11-01 16:48:08.919   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.919   Installing the file.
+2026-11-01 16:48:08.919   Successfully installed the file.
+2026-11-01 16:48:08.919   -- File entry --
+2026-11-01 16:48:08.919   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-reporting.txt
+2026-11-01 16:48:08.919   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.919   Installing the file.
+2026-11-01 16:48:08.919   Successfully installed the file.
+2026-11-01 16:48:08.919   -- File entry --
+2026-11-01 16:48:08.919   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\Jerzy-scale-200.txt
+2026-11-01 16:48:08.919   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.919   Installing the file.
+2026-11-01 16:48:08.921   Successfully installed the file.
+2026-11-01 16:48:08.921   -- File entry --
+2026-11-01 16:48:08.921   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-audio.log
+2026-11-01 16:48:08.922   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.922   Installing the file.
+2026-11-01 16:48:08.922   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows
+2026-11-01 16:48:08.922   Successfully installed the file.
+2026-11-01 16:48:08.922   -- File entry --
+2026-11-01 16:48:08.922   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-build.log
+2026-11-01 16:48:08.922   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.922   Installing the file.
+2026-11-01 16:48:08.923   Successfully installed the file.
+2026-11-01 16:48:08.923   -- File entry --
+2026-11-01 16:48:08.923   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-configure.log
+2026-11-01 16:48:08.923   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.923   Installing the file.
+2026-11-01 16:48:08.925   Successfully installed the file.
+2026-11-01 16:48:08.925   -- File entry --
+2026-11-01 16:48:08.925   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-gui.log
+2026-11-01 16:48:08.925   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.925   Installing the file.
+2026-11-01 16:48:08.925   Successfully installed the file.
+2026-11-01 16:48:08.926   -- File entry --
+2026-11-01 16:48:08.926   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-host.log
+2026-11-01 16:48:08.926   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.926   Installing the file.
+2026-11-01 16:48:08.926   Successfully installed the file.
+2026-11-01 16:48:08.926   -- File entry --
+2026-11-01 16:48:08.926   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-installer.log
+2026-11-01 16:48:08.926   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.926   Installing the file.
+2026-11-01 16:48:08.927   Successfully installed the file.
+2026-11-01 16:48:08.927   -- File entry --
+2026-11-01 16:48:08.927   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-LastTest.log
+2026-11-01 16:48:08.927   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.927   Installing the file.
+2026-11-01 16:48:08.928   Successfully installed the file.
+2026-11-01 16:48:08.928   -- File entry --
+2026-11-01 16:48:08.928   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-package-check.log
+2026-11-01 16:48:08.928   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.928   Installing the file.
+2026-11-01 16:48:08.928   Successfully installed the file.
+2026-11-01 16:48:08.928   -- File entry --
+2026-11-01 16:48:08.928   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-package.log
+2026-11-01 16:48:08.928   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.928   Installing the file.
+2026-11-01 16:48:08.928   Successfully installed the file.
+2026-11-01 16:48:08.928   -- File entry --
+2026-11-01 16:48:08.928   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-report-publish.log
+2026-11-01 16:48:08.928   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.928   Installing the file.
+2026-11-01 16:48:08.930   Successfully installed the file.
+2026-11-01 16:48:08.930   -- File entry --
+2026-11-01 16:48:08.930   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-reporting-tests.log
+2026-11-01 16:48:08.930   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.930   Installing the file.
+2026-11-01 16:48:08.930   Successfully installed the file.
+2026-11-01 16:48:08.930   -- File entry --
+2026-11-01 16:48:08.930   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-SHA256SUMS.txt
+2026-11-01 16:48:08.930   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.930   Installing the file.
+2026-11-01 16:48:08.930   Successfully installed the file.
+2026-11-01 16:48:08.930   -- File entry --
+2026-11-01 16:48:08.930   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-tests.log
+2026-11-01 16:48:08.932   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.932   Installing the file.
+2026-11-01 16:48:08.932   Successfully installed the file.
+2026-11-01 16:48:08.932   -- File entry --
+2026-11-01 16:48:08.932   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-validator-build.log
+2026-11-01 16:48:08.932   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.932   Installing the file.
+2026-11-01 16:48:08.933   Successfully installed the file.
+2026-11-01 16:48:08.933   -- File entry --
+2026-11-01 16:48:08.933   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-validator.log
+2026-11-01 16:48:08.933   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.933   Installing the file.
+2026-11-01 16:48:08.933   Successfully installed the file.
+2026-11-01 16:48:08.933   -- File entry --
+2026-11-01 16:48:08.933   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\evidence-windows.xml
+2026-11-01 16:48:08.933   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.933   Installing the file.
+2026-11-01 16:48:08.934   Successfully installed the file.
+2026-11-01 16:48:08.934   -- File entry --
+2026-11-01 16:48:08.934   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\Jerzy-download-links.json
+2026-11-01 16:48:08.934   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.934   Installing the file.
+2026-11-01 16:48:08.936   Successfully installed the file.
+2026-11-01 16:48:08.936   -- File entry --
+2026-11-01 16:48:08.936   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\Jerzy-verification.json
+2026-11-01 16:48:08.937   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.937   Installing the file.
+2026-11-01 16:48:08.937   Successfully installed the file.
+2026-11-01 16:48:08.937   -- File entry --
+2026-11-01 16:48:08.937   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\release_commit.txt
+2026-11-01 16:48:08.937   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.937   Installing the file.
+2026-11-01 16:48:08.937   Successfully installed the file.
+2026-11-01 16:48:08.937   -- File entry --
+2026-11-01 16:48:08.937   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows\status.json
+2026-11-01 16:48:08.937   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.937   Installing the file.
+2026-11-01 16:48:08.938   Successfully installed the file.
+2026-11-01 16:48:08.938   -- File entry --
+2026-11-01 16:48:08.938   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows-capture-failure\evidence-host.log
+2026-11-01 16:48:08.939   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.939   Installing the file.
+2026-11-01 16:48:08.939   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows-capture-failure
+2026-11-01 16:48:08.939   Successfully installed the file.
+2026-11-01 16:48:08.939   -- File entry --
+2026-11-01 16:48:08.939   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows-capture-failure\evidence-validator.log
+2026-11-01 16:48:08.939   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.939   Installing the file.
+2026-11-01 16:48:08.939   Successfully installed the file.
+2026-11-01 16:48:08.939   -- File entry --
+2026-11-01 16:48:08.939   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\Jerzy-2026-11-01\windows-capture-failure\status.json
+2026-11-01 16:48:08.939   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.939   Installing the file.
+2026-11-01 16:48:08.941   Successfully installed the file.
+2026-11-01 16:48:08.941   -- File entry --
+2026-11-01 16:48:08.941   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-audio.log
+2026-11-01 16:48:08.941   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.941   Installing the file.
+2026-11-01 16:48:08.941   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline
+2026-11-01 16:48:08.943   Successfully installed the file.
+2026-11-01 16:48:08.943   -- File entry --
+2026-11-01 16:48:08.943   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-build.log
+2026-11-01 16:48:08.943   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.943   Installing the file.
+2026-11-01 16:48:08.944   Successfully installed the file.
+2026-11-01 16:48:08.944   -- File entry --
+2026-11-01 16:48:08.945   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-configure.log
+2026-11-01 16:48:08.945   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.945   Installing the file.
+2026-11-01 16:48:08.946   Successfully installed the file.
+2026-11-01 16:48:08.946   -- File entry --
+2026-11-01 16:48:08.946   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-gui.log
+2026-11-01 16:48:08.946   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.946   Installing the file.
+2026-11-01 16:48:08.947   Successfully installed the file.
+2026-11-01 16:48:08.947   -- File entry --
+2026-11-01 16:48:08.947   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-LastTest.log
+2026-11-01 16:48:08.947   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.947   Installing the file.
+2026-11-01 16:48:08.947   Successfully installed the file.
+2026-11-01 16:48:08.947   -- File entry --
+2026-11-01 16:48:08.947   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-tests.log
+2026-11-01 16:48:08.947   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.947   Installing the file.
+2026-11-01 16:48:08.948   Successfully installed the file.
+2026-11-01 16:48:08.948   -- File entry --
+2026-11-01 16:48:08.948   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-validator-build.log
+2026-11-01 16:48:08.948   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.948   Installing the file.
+2026-11-01 16:48:08.948   Successfully installed the file.
+2026-11-01 16:48:08.948   -- File entry --
+2026-11-01 16:48:08.948   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\evidence-windows.xml
+2026-11-01 16:48:08.948   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.948   Installing the file.
+2026-11-01 16:48:08.948   Successfully installed the file.
+2026-11-01 16:48:08.948   -- File entry --
+2026-11-01 16:48:08.948   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-baseline\status.json
+2026-11-01 16:48:08.950   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.950   Installing the file.
+2026-11-01 16:48:08.950   Successfully installed the file.
+2026-11-01 16:48:08.950   -- File entry --
+2026-11-01 16:48:08.950   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-audio.log
+2026-11-01 16:48:08.950   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.950   Installing the file.
+2026-11-01 16:48:08.950   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44
+2026-11-01 16:48:08.950   Successfully installed the file.
+2026-11-01 16:48:08.950   -- File entry --
+2026-11-01 16:48:08.950   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-build.log
+2026-11-01 16:48:08.950   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.950   Installing the file.
+2026-11-01 16:48:08.952   Successfully installed the file.
+2026-11-01 16:48:08.952   -- File entry --
+2026-11-01 16:48:08.952   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-configure.log
+2026-11-01 16:48:08.952   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.952   Installing the file.
+2026-11-01 16:48:08.954   Successfully installed the file.
+2026-11-01 16:48:08.954   -- File entry --
+2026-11-01 16:48:08.954   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-gui.log
+2026-11-01 16:48:08.954   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.954   Installing the file.
+2026-11-01 16:48:08.954   Successfully installed the file.
+2026-11-01 16:48:08.954   -- File entry --
+2026-11-01 16:48:08.954   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-LastTest.log
+2026-11-01 16:48:08.954   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.954   Installing the file.
+2026-11-01 16:48:08.954   Successfully installed the file.
+2026-11-01 16:48:08.954   -- File entry --
+2026-11-01 16:48:08.954   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-report-publish.log
+2026-11-01 16:48:08.954   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.954   Installing the file.
+2026-11-01 16:48:08.956   Successfully installed the file.
+2026-11-01 16:48:08.956   -- File entry --
+2026-11-01 16:48:08.956   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-reporting-tests.log
+2026-11-01 16:48:08.956   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.956   Installing the file.
+2026-11-01 16:48:08.956   Successfully installed the file.
+2026-11-01 16:48:08.956   -- File entry --
+2026-11-01 16:48:08.956   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-tests.log
+2026-11-01 16:48:08.956   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.956   Installing the file.
+2026-11-01 16:48:08.956   Successfully installed the file.
+2026-11-01 16:48:08.956   -- File entry --
+2026-11-01 16:48:08.956   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-validator-build.log
+2026-11-01 16:48:08.956   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.956   Installing the file.
+2026-11-01 16:48:08.958   Successfully installed the file.
+2026-11-01 16:48:08.958   -- File entry --
+2026-11-01 16:48:08.958   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\evidence-windows.xml
+2026-11-01 16:48:08.958   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.958   Installing the file.
+2026-11-01 16:48:08.958   Successfully installed the file.
+2026-11-01 16:48:08.958   -- File entry --
+2026-11-01 16:48:08.958   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\evidence\windows-msvc-44\status.json
+2026-11-01 16:48:08.958   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.958   Installing the file.
+2026-11-01 16:48:08.958   Successfully installed the file.
+2026-11-01 16:48:08.958   -- File entry --
+2026-11-01 16:48:08.958   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\expert.png
+2026-11-01 16:48:08.958   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.958   Installing the file.
+2026-11-01 16:48:08.958   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots
+2026-11-01 16:48:08.972   Successfully installed the file.
+2026-11-01 16:48:08.972   -- File entry --
+2026-11-01 16:48:08.972   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\generative.png
+2026-11-01 16:48:08.972   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.972   Installing the file.
+2026-11-01 16:48:08.984   Successfully installed the file.
+2026-11-01 16:48:08.984   -- File entry --
+2026-11-01 16:48:08.984   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\Jerzy-loaded-vst3.png
+2026-11-01 16:48:08.984   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.984   Installing the file.
+2026-11-01 16:48:08.995   Successfully installed the file.
+2026-11-01 16:48:08.995   -- File entry --
+2026-11-01 16:48:08.995   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\Jerzy-screenshot-expert.png
+2026-11-01 16:48:08.995   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:08.995   Installing the file.
+2026-11-01 16:48:09.004   Successfully installed the file.
+2026-11-01 16:48:09.004   -- File entry --
+2026-11-01 16:48:09.004   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\Jerzy-screenshot-generative.png
+2026-11-01 16:48:09.004   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.004   Installing the file.
+2026-11-01 16:48:09.013   Successfully installed the file.
+2026-11-01 16:48:09.013   -- File entry --
+2026-11-01 16:48:09.013   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\Jerzy-screenshot-Jerzy-loaded-vst3.png
+2026-11-01 16:48:09.013   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.013   Installing the file.
+2026-11-01 16:48:09.021   Successfully installed the file.
+2026-11-01 16:48:09.021   -- File entry --
+2026-11-01 16:48:09.021   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\Jerzy-screenshot-panel-clean.png
+2026-11-01 16:48:09.021   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.021   Installing the file.
+2026-11-01 16:48:09.027   Successfully installed the file.
+2026-11-01 16:48:09.027   -- File entry --
+2026-11-01 16:48:09.027   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\Jerzy-screenshot-panel-patched.png
+2026-11-01 16:48:09.027   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.027   Installing the file.
+2026-11-01 16:48:09.035   Successfully installed the file.
+2026-11-01 16:48:09.035   -- File entry --
+2026-11-01 16:48:09.035   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\panel-200.png
+2026-11-01 16:48:09.035   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.035   Installing the file.
+2026-11-01 16:48:09.057   Successfully installed the file.
+2026-11-01 16:48:09.057   -- File entry --
+2026-11-01 16:48:09.057   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\panel-clean.png
+2026-11-01 16:48:09.057   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.057   Installing the file.
+2026-11-01 16:48:09.065   Successfully installed the file.
+2026-11-01 16:48:09.065   -- File entry --
+2026-11-01 16:48:09.068   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\screenshots\panel-patched.png
+2026-11-01 16:48:09.068   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.068   Installing the file.
+2026-11-01 16:48:09.075   Successfully installed the file.
+2026-11-01 16:48:09.075   -- File entry --
+2026-11-01 16:48:09.075   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\security\gitleaks-current-tree.json
+2026-11-01 16:48:09.075   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.075   Installing the file.
+2026-11-01 16:48:09.077   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\security
+2026-11-01 16:48:09.077   Successfully installed the file.
+2026-11-01 16:48:09.077   -- File entry --
+2026-11-01 16:48:09.077   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\security\gitleaks-history.json
+2026-11-01 16:48:09.077   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.077   Installing the file.
+2026-11-01 16:48:09.077   Successfully installed the file.
+2026-11-01 16:48:09.077   -- File entry --
+2026-11-01 16:48:09.077   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\docs\security\PUBLICATION_REVIEW.md
+2026-11-01 16:48:09.077   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.077   Installing the file.
+2026-11-01 16:48:09.079   Successfully installed the file.
+2026-11-01 16:48:09.081   -- File entry --
+2026-11-01 16:48:09.081   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\LICENSES\AGPL-3.0.txt
+2026-11-01 16:48:09.081   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.081   Installing the file.
+2026-11-01 16:48:09.081   Creating directory: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\LICENSES
+2026-11-01 16:48:09.081   Successfully installed the file.
+2026-11-01 16:48:09.081   -- File entry --
+2026-11-01 16:48:09.081   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\LICENSES\JUCE.md
+2026-11-01 16:48:09.081   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.081   Installing the file.
+2026-11-01 16:48:09.083   Successfully installed the file.
+2026-11-01 16:48:09.083   -- File entry --
+2026-11-01 16:48:09.083   Dest filename: C:\ProgramData\Jerzy Audio\Jerzy Voltage Garden\LICENSES\VST3.txt
+2026-11-01 16:48:09.083   Time stamp of our file: 2026-11-01 16:39:08.000
+2026-11-01 16:48:09.083   Installing the file.
+2026-11-01 16:48:09.083   Successfully installed the file.
+2026-11-01 16:48:09.083   Saving uninstall information.
+2026-11-01 16:48:09.083   Creating new uninstall key: HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall\{418E956D-1377-4CF3-989B-F2C442050822}_is1
+2026-11-01 16:48:09.083   Writing uninstall key values.
+2026-11-01 16:48:09.083   Detected previous non administrative install? No
+2026-11-01 16:48:09.083   Detected previous administrative 32-bit install? No
+2026-11-01 16:48:09.097   Installation process succeeded.
+2026-11-01 16:48:09.097   Need to restart Windows? No
+2026-11-01 16:48:09.099   Deinitializing Setup.
+2026-11-01 16:48:09.109   Log closed.
