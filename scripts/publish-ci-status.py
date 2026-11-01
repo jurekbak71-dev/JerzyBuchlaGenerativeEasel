@@ -60,6 +60,11 @@ def evidence_files(root, include_release=False):
             if path.stat().st_size > 80_000_000:
                 raise RuntimeError('Release file exceeds the bounded Git delivery size')
             result[path.name] = path.read_bytes()
+    if include_release:
+        for name in ('panel-clean', 'panel-patched', 'generative', 'expert', 'Jerzy-loaded-vst3'):
+            path = root / 'out/screenshots' / (name + '.png')
+            if path.is_file() and 0 < path.stat().st_size <= 4_000_000:
+                result['Jerzy-screenshot-' + name + '.png'] = path.read_bytes()
     return result
 
 

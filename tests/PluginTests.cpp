@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <stdexcept>
+#include <set>
 void require(bool b,const char* message){if(!b)throw std::runtime_error(message);std::cout<<"PASS "<<message<<'\n';}
 void set(GardenProcessor& p,const char* id,float value){auto* v=p.state.getParameter(id);v->setValueNotifyingHost(v->convertTo0to1(value));}
 struct Playhead:juce::AudioPlayHead {
@@ -69,14 +70,17 @@ int main(int argc,char** argv){
   juce::AudioBuffer<float> block(2,128);juce::MidiBuffer events;
   instance->processBlock(block,events);require(block.getMagnitude(0,128)==0,"loaded VST3 MIDI idle silent");
   events.addEvent(juce::MidiMessage::noteOn(1,60,juce::uint8(110)),0);instance->processBlock(block,events);
-  require(block.getMagnitude(0,128)>0,"loaded Windows VST3 renders MIDI audio");
+  require(block.getMagnitude(0,128)>0,"loaded VST3 renders MIDI audio");
   juce::MemoryBlock saved;instance->getStateInformation(saved);require(saved.getSize()>0,"loaded VST3 saves state");instance->setStateInformation(saved.getData(),int(saved.getSize()));
   auto window=std::unique_ptr<juce::AudioProcessorEditor>(instance->createEditor());require(window!=nullptr,"loaded VST3 creates editor");
-  window->addToDesktop(juce::ComponentPeer::windowIsTemporary);window->setVisible(true);juce::MessageManager::getInstance()->runDispatchLoopUntil(200);
-  auto image=window->createComponentSnapshot(window->getLocalBounds());
+  window->setVisible(false);window->addToDesktop(juce::ComponentPeer::windowIsTemporary);window->getPeer()->setCurrentRenderingEngine(0);window->setVisible(true);juce::MessageManager::getInstance()->runDispatchLoopUntil(200);
+  auto image=juce::createSnapshotOfNativeWindow(window->getPeer()->getNativeHandle());
+  require(image.isValid(),"loaded native VST3 window snapshot is valid");
+  std::set<juce::uint32> colours;for(int y=0;y<image.getHeight();y+=16)for(int x=0;x<image.getWidth();x+=16)colours.insert(image.getPixelAt(x,y).getARGB());
+  require(colours.size()>20,"loaded VST3 screenshot contains rendered controls");
   auto file=juce::File::getCurrentWorkingDirectory().getChildFile("out/screenshots/Jerzy-loaded-vst3.png");file.getParentDirectory().createDirectory();
   juce::FileOutputStream stream(file);stream.setPosition(0);stream.truncate();juce::PNGImageFormat png;require(png.writeImageToStream(image,stream),"loaded VST3 GUI captured");
-  window->removeFromDesktop();window.reset();instance->releaseResources();instance.reset();
+  stream.flush();window.reset();instance->releaseResources();instance.reset();juce::MessageManager::getInstance()->runDispatchLoopUntil(60);
  }
  std::cout<<"RESULT plugin integration complete\n";return 0;
  }catch(const std::exception& e){std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}
