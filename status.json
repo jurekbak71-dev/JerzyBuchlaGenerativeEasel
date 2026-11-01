@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "producer": "voltage-garden-windows-ci",
-  "phase": "compiled",
+  "phase": "validated",
   "head_sha": "cc845245201a77e420f6d0f976758c3ec550a189",
   "run_id": "41322069670",
   "run_attempt": "1",
@@ -18,7 +18,27 @@
       "outputs": {},
       "outcome": "success",
       "conclusion": "success"
+    },
+    "tests": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "gui": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "validator": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "host": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
     }
   },
-  "updated_at": "2026-11-01T15:49:10.724616+00:00"
+  "updated_at": "2026-11-01T15:49:23.375677+00:00"
 }
