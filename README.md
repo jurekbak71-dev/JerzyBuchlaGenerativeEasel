@@ -4,15 +4,16 @@ Autorski instrument VST3 dla Windows x64 inspirowany filozofią Buchla Music Eas
 
 ## Status (2026-11-01)
 
-Działająca wersja rozwojowa **Jerzy Voltage Garden 0.1.0** dla Windows x64:
+**Jerzy Voltage Garden 0.2.0** ma GUI przebudowane według zdjęcia zatwierdzonego przez użytkownika: jasny panel 20 suwaków, zwarta sekcja gałek, niebiesko-czerwony kontroler 29 kontaktów oraz działające kable DSP.
 
-- [Pobierz VST3 ZIP — 3,3 MB](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/d15f8c232913fcce86a18ae91f58b12ee97bfa7b/JerzyVoltageGarden-0.1.0-Windows-x64.zip)
-- [Pobierz instalator — 4,7 MB](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/d15f8c232913fcce86a18ae91f58b12ee97bfa7b/JerzyVoltageGarden-0.1.0-Windows-x64-Setup.exe)
-- [Pełne źródła z JUCE — 27,8 MB](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/d15f8c232913fcce86a18ae91f58b12ee97bfa7b/JerzyVoltageGarden-0.1.0-Source.zip)
+- [Pobierz Windows x64 VST3 ZIP — 4,2 MB](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/335319f8ca943df895ef72f54c5f66be75ea1a7e/JerzyVoltageGarden-0.2.0-Windows-x64.zip)
+- [Pobierz instalator — 5,5 MB](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/335319f8ca943df895ef72f54c5f66be75ea1a7e/JerzyVoltageGarden-0.2.0-Windows-x64-Setup.exe)
+- [Źródła z JUCE — 28,7 MB](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/335319f8ca943df895ef72f54c5f66be75ea1a7e/JerzyVoltageGarden-0.2.0-Source.zip)
+- [Obejrzyj rzeczywiste GUI Windows](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/335319f8ca943df895ef72f54c5f66be75ea1a7e/Jerzy-screenshot-Jerzy-loaded-vst3.png)
 
-Pliki pobrano i zweryfikowano poza CI. Windows: MSVC, CTest, pluginval, ładowanie VST3, audio MIDI, rzeczywiste GUI, WAV oraz wykonanie instalatora i uninstallera przeszły testy. [Dowody i ograniczenia](docs/IMPLEMENTATION_STATUS.md), [budowanie](docs/BUILD.md), [instrukcja PL](docs/MANUAL_PL.md).
+Pliki pobrano i zweryfikowano poza CI. Windows zaliczył CTest, pluginval, ładowanie VST3, MIDI/audio, GUI, WAV oraz instalację i odinstalowanie. [Dowody i ograniczenia](docs/IMPLEMENTATION_STATUS.md), [porównanie z referencją](docs/GUI_REFERENCE_QA.md), [instrukcja PL](docs/MANUAL_PL.md).
 
-To nadal nie jest pełna realizacja MASTER_PROMPT: m.in. brak testów FL Studio, oryginalnej zatwierdzonej makiety oraz części zaawansowanych funkcji generatora. Instalator jest niepodpisany. Interaktywny patching wpływa na rzeczywisty DSP.
+Silnik pozostaje wersją rozwojową z brakującymi funkcjami pełnego MASTER_PROMPT. FL Studio nie było testowane. Instalator jest niepodpisany.
 
 ## Dla Codexa
 1. Przeczytaj [AGENTS.md](AGENTS.md) oraz [docs/MASTER_PROMPT.md](docs/MASTER_PROMPT.md).

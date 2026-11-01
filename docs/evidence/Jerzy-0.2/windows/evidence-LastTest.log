@@ -1,0 +1,90 @@
+Start testing: Nov 01 16:47 Coordinated Universal Time
+----------------------------------------------------------
+1/2 Testing: core
+1/2 Test: core
+Command: "D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/windows/Release/garden_tests.exe"
+Directory: D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/windows
+"core" start time: Nov 01 16:47 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+PASS audio cable accepted
+PASS unsafe gate/audio conversion rejected
+PASS zero delay feedback rejected
+PASS failed edit leaves graph intact
+PASS fan out accepted
+PASS multiple input sources accepted
+PASS duplicate rejected
+PASS NaN gain rejected
+PASS 100000 concurrent mailbox publications remain valid
+PASS MIDI mode does not self start
+PASS host synced generator produces audio without MIDI
+PASS offline/block size deterministic render bit exact
+PASS seed changes musical/audio output
+PASS empty graph is silent: graph controls output
+PASS FM cable added
+PASS adding modulation cable changes rendered audio
+PASS muting oscillator cable silences audio path
+PASS MIDI note creates sound
+PASS A4 oscillator frequency 440 Hz
+PASS sustain holds released note
+PASS sustain release decays without stuck note
+PASS FREE clock requires explicit start
+PASS FREE start produces audio
+PASS finite bounded stress 44100 / 32
+PASS finite bounded stress 44100 / 64
+PASS finite bounded stress 44100 / 256
+PASS finite bounded stress 44100 / 1024
+PASS finite bounded stress 48000 / 32
+PASS finite bounded stress 48000 / 64
+PASS finite bounded stress 48000 / 256
+PASS finite bounded stress 48000 / 1024
+PASS finite bounded stress 96000 / 32
+PASS finite bounded stress 96000 / 64
+PASS finite bounded stress 96000 / 256
+PASS finite bounded stress 96000 / 1024
+PASS DSP begin, graph swap and 48000 samples allocate no heap
+PASS LPG attenuates high frequency relative to VCA
+PASS LPG preserves bass relative to treble
+PASS timeline loop clears stale MIDI gate
+PASS invalid sample rate and extreme host timeline guarded
+PASS last-note fallback restores original velocity
+PASS duplicate NoteOff cannot resurrect a released note under sustain
+PASS patched HOST pulser remains silent when transport is stopped
+PASS explicit FREE clock drives pulser in MIDI mode and releases between pulses
+PASS NoteOff release tail preserves A4 pitch instead of jumping to default C
+BENCHMARK 5 seconds audio / 0.164328 seconds compute (not host CPU measurement)
+RESULT 45 checks passed
+<end of output>
+Test time =   1.35 sec
+----------------------------------------------------------
+Test Passed.
+"core" end time: Nov 01 16:47 Coordinated Universal Time
+"core" time elapsed: 00:00:01
+----------------------------------------------------------
+
+2/2 Testing: plugin_integration
+2/2 Test: plugin_integration
+Command: "D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/windows/garden_integration_artefacts/Release/garden_integration.exe"
+Directory: D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/windows
+"plugin_integration" start time: Nov 01 16:47 Coordinated Universal Time
+Output:
+----------------------------------------------------------
+PASS plugin MIDI idle silent
+PASS MIDI event offset respected
+PASS MIDI note produces stereo audio
+PASS plugin route accepted
+PASS routing state roundtrip
+PASS parameter state roundtrip
+PASS out of range state rejected atomically
+PASS malformed state leaves existing patch intact
+PASS plugin offline render invariant to block size
+RESULT plugin integration complete
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"plugin_integration" end time: Nov 01 16:47 Coordinated Universal Time
+"plugin_integration" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 01 16:47 Coordinated Universal Time

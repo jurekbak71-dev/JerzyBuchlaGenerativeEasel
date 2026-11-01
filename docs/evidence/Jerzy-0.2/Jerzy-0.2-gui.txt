@@ -1,0 +1,23 @@
+PASS plugin MIDI idle silent
+PASS MIDI event offset respected
+PASS MIDI note produces stereo audio
+PASS plugin route accepted
+PASS routing state roundtrip
+PASS parameter state roundtrip
+PASS out of range state rejected atomically
+PASS malformed state leaves existing patch intact
+PASS plugin offline render invariant to block size
+PASS panel-clean
+PASS panel-patched
+PASS generative
+PASS expert
+PASS expert screenshot contains distinct diagnostics view
+PASS GUI drag connects real graph cable
+PASS reference layout has a long functional timbre fader
+PASS hardware fader updates DSP parameter
+PASS fine knob follows same host parameter
+PASS GUI touch key produces audio
+PASS GUI slide releases old key and plays new pitch
+PASS GUI drag outside leaves no held note
+PASS 29th touch contact plays E5 through DSP
+RESULT plugin integration complete

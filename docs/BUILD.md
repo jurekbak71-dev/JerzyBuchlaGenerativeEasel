@@ -15,7 +15,7 @@ Preset Windows używa Ninja Multi-Config i jawnego kompilatora `cl`. `scripts/wi
 
 ## Dodatkowe sprawdzenie skalowania 200% (Linux)
 
-`tests/GuiScaleProbe.cpp` uruchomiono z już zbudowaną biblioteką wtyczki na Xvfb/xfwm4. Edytor ma 2640×1600; drag z fizycznych współrzędnych gniazd aktualizuje graf, a klawiatura przy powiększeniu produkuje audio. Dowód: `docs/evidence/gui-scale-200.txt` i `docs/screenshots/panel-200.png`. Nie jest to test DPI Windows ani porównanie z niedostępną makietą.
+`tests/GuiScaleProbe.cpp` uruchomiono z już zbudowaną biblioteką wtyczki na Xvfb/xfwm4. Edytor ma 2640×1840; drag z fizycznych współrzędnych gniazd aktualizuje graf, a klawiatura przy powiększeniu produkuje audio. Dowód: `docs/evidence/Jerzy-0.2/Jerzy-0.2-scale-200.txt` i `docs/screenshots/0.2/panel-200.png`. Nie jest to test DPI Windows ani porównanie z niedostępną makietą.
 
 Z katalogu repo, po `source scripts/cloud-env.sh` i standardowym buildzie Linux:
 
