@@ -1,0 +1,7 @@
+[0/2] Re-checking globbed directories...
+[1/69] Building CXX object CMakeFiles\garden_tests.dir\Release\tests\CoreTests.cpp.obj
+[2/69] Linking CXX executable Release\garden_tests.exe
+[3/69] Building CXX object CMakeFiles\JerzyVoltageGarden.dir\Release\src\Plugin.cpp.obj
+[4/69] Building CXX object CMakeFiles\JerzyVoltageGarden.dir\Release\src\Editor.cpp.obj
+[5/69] Building CXX object CMakeFiles\JerzyVoltageGarden.dir\Release\_deps\juce-src\modules\juce_audio_processors\juce_audio_processors.cpp.obj
+[6/69] Bu
