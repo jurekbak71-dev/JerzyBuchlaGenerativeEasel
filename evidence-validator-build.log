@@ -34,3 +34,17 @@ Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc
 -- Detecting CXX compile features - done
 -- Configuring juceaide
 -- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Not building with VST2
+-- Configuring done (42.6s)
+-- Generating done (0.4s)
+-- Build files have been written to: D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/out/pluginval-build
+[0/2] Re-checking globbed directories...
+[1/30] Generating pluginval_artefacts/JuceLibraryCode/pluginval_resources.rc
+[2/30] Building RC object CMakeFiles\pluginval_rc_lib.dir\Release\pluginval_artefacts\JuceLibraryCode\pluginval_resources.rc.res
+[3/30] Generating pluginval_artefacts/JuceLibraryCode/JuceHeader.h
+[4/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\CrashHandler.cpp.obj
+[5/30] Building CXX object CMakeFiles\pluginval.dir\Release\Source\CommandLine.cpp.obj
+[6/30] Building CXX obj
