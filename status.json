@@ -1,44 +1,13 @@
 {
   "schema": 1,
   "producer": "voltage-garden-windows-ci",
-  "phase": "validated",
-  "head_sha": "40c1bd555af2c542ecc7f4d86616ff5a5ac63137",
-  "run_id": "41320487537",
+  "phase": "running",
+  "head_sha": "cc845245201a77e420f6d0f976758c3ec550a189",
+  "run_id": "41322069670",
   "run_attempt": "1",
-  "run_url": "https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41320487537",
+  "run_url": "https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41322069670",
   "artifact_url": "",
   "artifact_id": "",
-  "steps": {
-    "configure": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "build": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "tests": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "gui": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "validator": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    },
-    "host": {
-      "outputs": {},
-      "outcome": "success",
-      "conclusion": "success"
-    }
-  },
-  "updated_at": "2026-11-01T15:29:45.202248+00:00"
+  "steps": {},
+  "updated_at": "2026-11-01T15:36:30.227306+00:00"
 }

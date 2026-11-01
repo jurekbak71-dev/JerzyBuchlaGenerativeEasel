@@ -1,9 +1,0 @@
-Test project D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/windows
-    Start 1: core
-1/2 Test #1: core .............................   Passed    1.82 sec
-    Start 2: plugin_integration
-2/2 Test #2: plugin_integration ...............   Passed    0.11 sec
-
-100% tests passed, 0 tests failed out of 2
-
-Total Test time (real) =   1.93 sec
