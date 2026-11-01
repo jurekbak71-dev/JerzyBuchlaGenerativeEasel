@@ -1,0 +1,13 @@
+test_command_wrapper_preserves_failure_and_output (test_ci_reporting.ReportingTests.test_command_wrapper_preserves_failure_and_output) ... ok
+test_evidence_is_bounded_and_only_expected_outputs_are_copied (test_ci_reporting.ReportingTests.test_evidence_is_bounded_and_only_expected_outputs_are_copied) ... ok
+test_missing_executable_is_reported_in_log (test_ci_reporting.ReportingTests.test_missing_executable_is_reported_in_log) ... ok
+test_pr_cannot_publish (test_ci_reporting.ReportingTests.test_pr_cannot_publish) ... ok
+test_progress_is_restricted_to_opted_in_runner_output (test_ci_reporting.ReportingTests.test_progress_is_restricted_to_opted_in_runner_output) ... ok
+test_publication_preserves_checkout_and_appends_without_force (test_ci_reporting.ReportingTests.test_publication_preserves_checkout_and_appends_without_force) ... ok
+test_release_binary_roundtrips_through_git (test_ci_reporting.ReportingTests.test_release_binary_roundtrips_through_git) ... ok
+test_unowned_branch_is_preserved (test_ci_reporting.ReportingTests.test_unowned_branch_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 7.670s
+
+OK

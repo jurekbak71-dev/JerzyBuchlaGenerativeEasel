@@ -1,0 +1,22 @@
+Cloning into 'out/pluginval'...
+Note: switching to 'ed19c2c16b57a6d94db391bea3ef4a80b769d5bf'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at ed19c2c Bump to macos-13 runners, 12 became unreliable. Closes #140.
+Submodule 'modules/juce' (https://github.com/juce-framework/JUCE) registered for path 'modules/juce'
+Cloning into 'D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/out/pluginval/modules/juce'...
+Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc83c9'
