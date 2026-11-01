@@ -20,7 +20,7 @@ Preset Windows używa Ninja Multi-Config i jawnego kompilatora `cl`. `scripts/wi
 Z katalogu repo, po `source scripts/cloud-env.sh` i standardowym buildzie Linux:
 
 ```sh
-g++ -std=c++20 -O2 -Isrc -I.cache/JUCE/modules -DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1 -DJUCE_WEB_BROWSER=0 -DJUCE_USE_CURL=0 tests/GuiScaleProbe.cpp 'build/linux/VoltageGarden_artefacts/Release/libVoltage Garden_SharedCode.a' -lasound -lfontconfig -lfreetype -lrt -ldl -pthread -o .cache/scale-probe
+g++ -std=c++20 -O2 -Isrc -I.cache/JUCE/modules -DJUCE_GLOBAL_MODULE_SETTINGS_INCLUDED=1 -DJUCE_WEB_BROWSER=0 -DJUCE_USE_CURL=0 tests/GuiScaleProbe.cpp 'build/linux/JerzyVoltageGarden_artefacts/Release/libJerzy Voltage Garden_SharedCode.a' -lasound -lfontconfig -lfreetype -lrt -ldl -pthread -o .cache/scale-probe
 DISPLAY=:100 .cache/scale-probe
 ```
 

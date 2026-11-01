@@ -1,0 +1,76 @@
+{
+  "source_commit": "cc845245201a77e420f6d0f976758c3ec550a189",
+  "run_url": "https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41322069670",
+  "pe_machine": "AMD64 / PE32+ / DLL",
+  "exports": [
+    "ExitDll",
+    "GetPluginFactory",
+    "InitDll"
+  ],
+  "bundle_binary_sha256": "c0cd618d83275c636c1dec0927ad0552b54420b553348b042cf64383ae35647c",
+  "verified_files": {
+    "JerzyVoltageGarden-0.1.0-Source.zip": {
+      "bytes": 27825436,
+      "sha256": "1a8b3dd7144313f5fb69cb93e4af384793f343299a0edd099192dbb3375f45b1"
+    },
+    "JerzyVoltageGarden-0.1.0-Windows-x64-Setup.exe": {
+      "bytes": 4728081,
+      "sha256": "1a806f062ccccd0b7256eea80d8cf2cacc52b88acf7b8b4587bd76f855293170"
+    },
+    "JerzyVoltageGarden-0.1.0-Windows-x64.zip": {
+      "bytes": 3313722,
+      "sha256": "ec8825ea70bfc241bbee1c2802f64601e781e87b53091a04ed5edfa624ace5c9"
+    }
+  },
+  "windows_checks": {
+    "configure": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "build": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "tests": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "gui": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "validator": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "host": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "package": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "package_check": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "artifacts": {
+      "outputs": {
+        "artifact-id": "13089862738",
+        "artifact-digest": "dc8e48322c4d1f8042b9733aa4cdd991a65108c5b377e2393c5c26bb227cf2e9",
+        "artifact-url": "https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41322069670/artifacts/13089862738"
+      },
+      "outcome": "success",
+      "conclusion": "success"
+    }
+  }
+}

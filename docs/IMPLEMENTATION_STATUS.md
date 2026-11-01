@@ -1,66 +1,51 @@
-# Aktualizacja 2026-11-01 — Jerzy Voltage Garden
+# Jerzy Voltage Garden 0.1.0 — stan 2026-11-01
 
-Trwają testy bieżących zmian: prefiks Jerzy w produkcie i paczkach, kontrast GUI, oktawy, przesuwanie nut dotykowej klawiatury i zwalnianie poza panelem, widoczność kabli bez ingerencji w DSP. Dodano test ładowania rzeczywistego bundla VST3, renderu MIDI, stanu i otwarcia edytora. ZIP binarny oraz źródła są rozdzielone. Dostawa plików przez ograniczony kanał Git raportów eliminuje zależność pobierania od API Actions.
+Dostępne są rzeczywiste, pobrane i sprawdzone pliki Windows x64. **Jest to działająca wersja rozwojowa, a nie pełna realizacja MASTER_PROMPT.** Nie deklarujemy testów FL Studio ani zgodności pikselowej z nieobecną makietą.
 
-PASS obecnego przebiegu: rdzeń CTest Linux; 8 testów infrastruktury, w tym binarny roundtrip ZIP przez Git. Kompilacja i dalsze testy pozostają w toku; ten wpis nie stanowi potwierdzenia gotowości Windows.
+## Pobieranie
 
-Nowszy od poprzedniego opisu raport `4f265a078a91764911a31df003f5a9fdba279cc1` potwierdza dla starszego kodu `b0a23ddc44395b334012133da94ff31404b4bf9d` sukces pluginval oraz instalacji i odinstalowania. Nie jest dowodem dla bieżących zmian. API Actions zwraca Forbidden, a próba pobrania poprzedniego artefaktu 404.
+- [VST3 ZIP — 3 313 722 bajty](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/d15f8c232913fcce86a18ae91f58b12ee97bfa7b/JerzyVoltageGarden-0.1.0-Windows-x64.zip)
+- [Instalator Windows — 4 728 081 bajtów](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/d15f8c232913fcce86a18ae91f58b12ee97bfa7b/JerzyVoltageGarden-0.1.0-Windows-x64-Setup.exe)
+- [Pełne źródła z JUCE — 27 825 436 bajtów](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/raw/d15f8c232913fcce86a18ae91f58b12ee97bfa7b/JerzyVoltageGarden-0.1.0-Source.zip)
+- [Artefakt Actions](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41322069670/artifacts/13089862738)
 
-Lokalny MinGW nie jest obsługiwany przez JUCE 8; nie zmieniano upstream, żeby omijać tę kontrolę. Alternatywne pobranie Microsoft SDK przez aka.ms odrzucone przez proxy (403). Kompilacja Windows pozostaje w istniejącym workflow MSVC.
+Linki bezpośrednie zostały sprawdzone przez HTTP: odpowiedź 206 i sygnatury ZIP/EXE. Są przypięte do niezmiennego commitu dostawy `d15f8c232913fcce86a18ae91f58b12ee97bfa7b`, nie do ruchomej gałęzi. Kod kompilacji: `cc845245201a77e420f6d0f976758c3ec550a189`. [Uruchomienie Windows](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41322069670). Późniejszy commit dokumentacyjny nie oznacza nowej kompilacji aplikacji.
 
-Brak oryginalnej zatwierdzonej makiety w references; brak FL Studio. Pozostałe ograniczenia funkcjonalne opisane poniżej nadal obowiązują.
+## Co poprawiono
 
----
+Nazwa produktu, projektu CMake, bundla i paczek zaczyna się od Jerzy. Poprawiono kontrast strzałek list i aktywnych przycisków; dodano zmianę oktawy oraz widoczność kabli bez zmiany DSP. Przesuwanie po klawiaturze zwalnia poprzednią nutę i gra nową; opuszczenie klawiatury zwalnia nutę. Zachowano monofoniczny silnik i format stanu hosta.
 
-# Rzeczywisty stan — 2026-10-31
+Dodano test ładowania rzeczywistego VST3 i obraz jego natywnego okna. Przechwytywanie Windows używa ekranu, ponieważ DC nadrzędnego okna odcinało osadzone dziecko VST3. ZIP binarny oddzielono od źródeł; skopiowana historia Git jest usuwana niezależnie od atrybutu Hidden. Dostawa przez Git działa bez API Actions.
 
-**Projekt pozostaje wersją rozwojową, nie spełnia pełnego MASTER_PROMPT. Nie ma jeszcze potwierdzonego instalatora ani ZIP Windows do pobrania.**
+## Dowody
 
-**Potwierdzona blokada zewnętrzna: rozliczenia konta GitHub.** Właściciel odczytał adnotację dla uruchomienia `41187716045`, job `124497917710`: "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings". Nie jest to wynik kompilacji. Nie zwiększano limitów, nie inicjowano płatności ani nie zmieniano widoczności repozytorium. Dalsze próby CI wstrzymano do rozwiązania blokady przez właściciela konta.
-
-## Co rzeczywiście sprawdzono
-
-| Obszar | Wynik i źródło dowodu |
+| Sprawdzenie | Wynik |
 |---|---|
-| Windows x64 / MSVC 19.51 | PASS kompilacji VST3 i standalone dla `6bc9c361dfa1af6bfcb3174aa9f22d3b0ba0e5e5`; [log](evidence/windows-msvc-44/evidence-build.log) |
-| Windows CTest | PASS 2/2, 44 sprawdzenia rdzenia; [pełny LastTest](evidence/windows-msvc-44/evidence-LastTest.log) |
-| Windows GUI i patch cords | PASS: cztery screenshoty prawdziwego edytora, odmienny EXPERT oraz drag aktualizujący DSP; [log](evidence/windows-msvc-44/evidence-gui.log) |
-| Windows offline WAV | PASS: stereo 48 kHz/24 bit, zapis i odczyt kontrolny próbek; [log](evidence/windows-msvc-44/evidence-audio.log). To nie jest test FL Studio. |
-| Windows pluginval | NOT RUN: run zatrzymała kompilacja samego pluginval (C3688, brak `<chrono>`), a nie wynik walidacji wtyczki; [log](evidence/windows-msvc-44/evidence-validator-build.log) |
-| Windows instalator i ZIP | NOT RUN: etapy po nieudanej kompilacji pluginval zostały pominięte |
-| Aktualny rdzeń Linux | PASS: 45 sprawdzeń, w tym utrzymanie pitch po Note Off; ASan/UBSan/LSan PASS; [sanitizery](evidence/asan-release-pitch.txt), [CTest](evidence/ctest-release-pitch.txt) |
-| Linux GUI i pluginval 5 | PASS po ostatniej poprawce MIDI. Osobny Steinberg validator pozostaje SKIPPED, nie jest zaliczany jako PASS. |
-| GUI 200% Linux | PASS: 2640×1600, kabel trafia w rzeczywisty graf, klawiatura produkuje audio; [test](evidence/gui-scale-200.txt), [obraz](screenshots/panel-200.png), kod `tests/GuiScaleProbe.cpp` |
-| Workflow | PASS actionlint 1.7.7; [proweniencja](evidence/actionlint.json). To walidacja konfiguracji, nie dowód uruchomienia CI. |
-| FL Studio / skanowanie / Piano Roll / szybki bounce | NOT TESTED: brak FL Studio w środowisku |
-| Porównanie z zatwierdzoną makietą | NOT TESTED: w repo brak oryginalnego PNG, PDF i fotografii z rozmowy |
+| Windows x64 MSVC 19.51 / JUCE 8.0.12 | PASS — kompilacja VST3, standalone i testów |
+| Windows CTest | PASS 2/2; 45 sprawdzeń rdzenia |
+| Windows pluginval 1.0.4, strictness 5 | PASS — rzeczywisty bundle |
+| Osobny host JUCE ładuje VST3 | PASS — skanowanie, instancja, MIDI idle silent, audio po Note On, zapis stanu, utworzenie i zamknięcie edytora |
+| GUI Windows | PASS — clean, patched, generative, expert; drag zmienia DSP, slide zmienia nutę, wyjście zwalnia klawisz |
+| WAV offline | PASS — odczyt pliku stereo 48 kHz/24 bit, zgodność próbek; render niezależny od bloku 32/1024 |
+| ZIP, instalator, uninstaller | PASS — wykonane na Windows, SHA256 zainstalowanego pliku zgodne z oryginałem |
+| Kontrola pobranych plików poza CI | PASS — wszystkie SHA256, CRC ZIP, struktura bundla, AMD64 PE32+ DLL, eksporty InitDll/GetPluginFactory/ExitDll, tożsamość commitu, źródła i brak historii Git |
+| Linux | PASS CTest 2/2, 8 testów infrastruktury, host VST3, GUI i WAV |
+| Linux GUI 200% | PASS 2640×1600, kabel aktualizuje DSP i klawiatura generuje dźwięk |
 
-## Ostatnie poprawki i uruchomienia
+Pełne świeże [logi Windows](evidence/Jerzy-2026-11-01/windows/), [kontrola plików](evidence/Jerzy-2026-11-01/windows/Jerzy-verification.json), [sumy](evidence/Jerzy-2026-11-01/windows/evidence-SHA256SUMS.txt) i [screenshoty](screenshots/). Powtarzalna kontrola pobranych plików: `python scripts/verify-delivery.py` z repo, pliki i status w `out/delivery`.
 
-Naprawiono velocity poprzedniej przytrzymanej nuty, powtórzony Note Off pod sustainem, zatrzymanie pulsera z HOST, działanie zegara FREE niezależnie od trybu generatora oraz skok wysokości ogona do domyślnego C po Note Off. Test ostatniego błędu najpierw rzeczywiście FAIL, po poprawce PASS.
+Pełne zrzuty panelu Windows pochodzą z rzeczywistego komponentu edytora. Dodatkowy screenshot `Jerzy-screenshot-Jerzy-loaded-vst3.png` pochodzi z natywnego okna załadowanej wtyczki; pulpit runnera ma tylko 1024 piksele szerokości, więc prawa część tego konkretnego zrzutu jest czarna poza obszarem pulpitu. Nie traktujemy go jako dowodu pełnego panelu ani testu DPI Windows. Pełne obrazy clean/patched/generative/expert mają 1320×800. Makieta koncepcyjna użytkownika nadal nie jest dostępna.
 
-Poprawka kompilacji pluginval używa jawnego dołączenia standardowego `<chrono>` przez `/FIchrono` i CMake project hook. Zachowuje domyślne flagi MSVC i wszystkie testy; nie modyfikuje upstream i nie wyłącza walidacji. Cache poprawnie skompilowanych wyników przygotowano, ale po szybkich awariach przed pierwszym krokiem wyłączono go diagnostycznie. Pozostaje pełne budowanie i wszystkie wymagane testy.
+## Ograniczenia
 
-Zmiany wysłano jako `f4e0dd9787dc9b50c0b83f6f5e6d8ef5aaa7f6ba`; zdarzenie CI ponowiono przez commit `9834437278e8ac0b2156ab6e2fec54c52b021646`. Dla obu nie otrzymano jeszcze raportu startowego. **Późniejsza adnotacja dostarczona przez właściciela potwierdziła, że job nie wystartował z powodu płatności/limitu konta.** Brak raportu nie jest wynikiem testu.
+- FL Studio: skanowanie, Piano Roll, zachowanie okien i szybki bounce **NOT TESTED**. Zaliczone są testy hosta JUCE i pluginval; nie zastępujemy nimi testu FL Studio.
+- Instalator nie ma podpisu Authenticode (tablica certyfikatów PE jest pusta).
+- Minimalny logiczny panel 1320×800, skalowanie do 200%; brak adaptacji do mniejszych ekranów.
+- Nadal brakuje pełnych niezależnych głosów bass/ambient/rytm, stylów i pełnych algorytmów Krell/Markov/Euclidean/random walk oraz rozwoju fraz; pełnego S&H/slew, AM/PM/ring modulation, kolorów szumu i pomiarów aliasingu; pełnego EXPERT, MIDI Learn, dostępnej z klawiatury edycji kabli, glide/pressure UI i pomiarów CPU w hoście.
+- Brak MPE i zewnętrznego MIDI OUT. Automatyzacja jest blokowa; seek resetuje DSP zamiast rekonstruować poprzedni ogon. Algorytmiczny pogłos nie jest emulacją konkretnego sprzętu.
 
-## Dostęp do CI
+## Historia diagnozy
 
-API Actions odpowiada `Forbidden`. Po wyraźnej zgodzie użytkownika workflow ma `contents:write` do publikowania ograniczonych raportów na osobnej gałęzi `codex/windows-build-status`. Ten kanał działał i dostarczył powyższe rzeczywiste logi Windows. Nie wymaga proszenia o token w czacie ani zmiany repozytoriów referencyjnych.
+Dawna blokada rozliczeń GitHub nie blokuje obecnego uruchomienia. W tym zadaniu Windows wykrył rzeczywisty błąd narzędzia przechwytującego obraz; [niezaliczony przebieg](evidence/Jerzy-2026-11-01/windows-capture-failure/) zachowano. Następnie testy przeszły, lecz archiwum z historią Git przekraczało ograniczenie kanału dostawy. Jawne usunięcie wyłącznie skopiowanej `.git` w generowanym katalogu źródeł rozwiązało problem. Nie usuwano historii projektu ani zależności. Poprzednie logi nie są liczone jako zaliczenie aktualnego kodu.
 
-Właściciel dostarczył komunikat z [jobu Windows](https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41187716045/job/124497917710), który potwierdza blokadę Billing & plans. Po jej usunięciu należy ponowić aktualny workflow i odebrać raport ze zgodnym SHA. Nie należy ponawiać w kółko zablokowanych uruchomień ani traktować ich jako błędu DSP.
-
-## Zakres i pozostałe wymagania
-
-Działają: rzeczywisty typowany graf audio/CV/gate/clock, fan-out i ograniczone sumowanie, mute/remove/gain/polarity, odrzucanie cykli, mailbox bez blokad/alokacji callbacku; oscylator/fold/FM, mod osc, dwa LPG/VCA/VCF, noise/random/envelope/pulser, pięć regulowanych kroków, mixer i algorytmiczny rezonans; MIDI i podstawowy deterministyczny generator, HOST/FREE, stan parametrów i kabli, presety, działający panel i klawiatura.
-
-Pozostają do realizacji lub weryfikacji: pełne niezależne głosy bass/ambient/rytm, style, Krell/Markov/Euclidean/random walk i rozwój fraz; S&H/slew i pełne niezależne moduły pulse/envelope; AM/PM, ring modulation, kolory szumu; analiza aliasingu i lepsza decymacja; pełny EXPERT, MIDI Learn, dostępna z klawiatury edycja kabli, glide/pressure UI; osobne pole stereo, kontrola tails i pomiary CPU w hoście. Brak MPE oraz zewnętrznego MIDI OUT. Automatyzacja jest blokowa. Seek resetuje DSP zamiast rekonstruować poprzedni ogon. Instalator nie jest podpisany Authenticode.
-
-Nie wykonano merge do main ani Release. Nie ma zweryfikowanego URL artefaktu Windows. Starsza [historia](BUILD_HISTORY.md) dokumentuje kolejne etapy i wcześniejsze, już rozwiązane blokady; nie zastępuje powyższego aktualnego stanu.
-
-
-## Diagnoza na podstawie obrazu użytkownika
-
-Zrzut listy Actions potwierdził, że próby `f4e0dd9` i `9834437` faktycznie zakończyły się błędem po 3–4 sekundach. Nie były potwierdzoną kolejką. Nie otrzymano raportu startowego ani komunikatu przyczyny. Zewnętrzna akcja cache była jedyną nowo dodaną akcją `uses` od ostatniego runu, który wykonał kompilację i testy. Jej SHA i manifesty zweryfikowano w oficjalnym repozytorium; w ramach izolacji problemu tymczasowo usunięto ją z workflow. Kompilacja, testy, pluginval i weryfikacja pakowania nie są pomijane. Potwierdzenie przyczyny wymaga komunikatu Annotations albo wyniku próby izolującej.
-
-
-Potwierdzona przyczyna rozliczeniowa oznacza, że wcześniejsza hipoteza o cache nie została potwierdzona. Akcja cache pozostaje obecnie wyłączona diagnostycznie; wszystkie wymagane kompilacje i testy są w workflow. Przed odblokowaniem konta nie deklarujemy weryfikacji poprawki nagłówka pluginval na Windows ani powstania EXE/ZIP.
+Konfiguracja instalacji/startu środowiska chmurowego jest zapisana jako draft. Publikacja i odtworzenie w nowym zadaniu pozostają działaniami produktu/użytkownika; nie zostały tu wykonane.

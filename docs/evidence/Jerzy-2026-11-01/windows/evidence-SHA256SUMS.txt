@@ -1,0 +1,3 @@
+1a8b3dd7144313f5fb69cb93e4af384793f343299a0edd099192dbb3375f45b1  JerzyVoltageGarden-0.1.0-Source.zip
+1a806f062ccccd0b7256eea80d8cf2cacc52b88acf7b8b4587bd76f855293170  JerzyVoltageGarden-0.1.0-Windows-x64-Setup.exe
+ec8825ea70bfc241bbee1c2802f64601e781e87b53091a04ed5edfa624ace5c9  JerzyVoltageGarden-0.1.0-Windows-x64.zip
