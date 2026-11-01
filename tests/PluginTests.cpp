@@ -47,7 +47,36 @@ int main(int argc,char** argv){
   juce::MemoryBlock genImage,expertImage;output.getChildFile("generative.png").loadFileAsData(genImage);output.getChildFile("expert.png").loadFileAsData(expertImage);require(genImage!=expertImage,"expert screenshot contains distinct diagnostics view");
   const auto mouse=juce::Desktop::getInstance().getMainMouseSource();auto event=[&](juce::Point<float> pos){return juce::MouseEvent(mouse,pos,juce::ModifierKeys(),1.f,0.f,0.f,0.f,0.f,editor.get(),editor.get(),juce::Time::getCurrentTime(),pos,juce::Time::getCurrentTime(),1,false);};
   const auto before=p.patch().size;editor->mouseDown(event({38,250}));editor->mouseDrag(event({680,274}));editor->mouseUp(event({680,274}));require(p.patch().size==before+1,"GUI drag connects real graph cable");
+  // Exercise the touch keyboard against the actual processor, including release outside it.
+  p.factory(0);p.processBlock(b,m);p.prepareToPlay(48000,128);
+  editor->mouseDown(event({42,680}));p.processBlock(b,m);require(b.getMagnitude(0,128)>0,"GUI touch key produces audio");
+  editor->mouseDrag(event({94,680}));p.processBlock(b,m);
+  GardenProcessor reference;reference.factory(0);reference.processBlock(b,m);reference.prepareToPlay(48000,128);reference.uiNote(48,110);reference.processBlock(b,m);reference.uiNote(48,0);reference.uiNote(49,110);
+  juce::AudioBuffer<float> expected(2,128);reference.processBlock(expected,m);
+  require(std::equal(b.getReadPointer(0),b.getReadPointer(0)+128,expected.getReadPointer(0)),"GUI slide releases old key and plays new pitch");
+  editor->mouseDrag(event({10,630}));p.processBlock(b,m);editor->mouseUp(event({10,630}));
+  for(int n=0;n<4000;++n)p.processBlock(b,m);
+  require(b.getMagnitude(0,128)<.00001f,"GUI drag outside leaves no held note");
   editor->removeFromDesktop();
+ }
+ if(argc>2&&juce::String(argv[1])=="--validate"){
+  juce::VST3PluginFormat format;juce::OwnedArray<juce::PluginDescription> descriptions;
+  format.findAllTypesForFile(descriptions,argv[2]);require(descriptions.size()==1,"actual VST3 bundle scanned");
+  juce::String error;auto instance=format.createInstanceFromDescription(*descriptions[0],48000,128,error);
+  require(instance!=nullptr,("actual VST3 instantiated: "+error).toRawUTF8());
+  require(instance->getName().startsWith("Jerzy"),"loaded VST3 product starts with Jerzy");
+  instance->setPlayConfigDetails(0,2,48000,128);instance->prepareToPlay(48000,128);
+  juce::AudioBuffer<float> block(2,128);juce::MidiBuffer events;
+  instance->processBlock(block,events);require(block.getMagnitude(0,128)==0,"loaded VST3 MIDI idle silent");
+  events.addEvent(juce::MidiMessage::noteOn(1,60,juce::uint8(110)),0);instance->processBlock(block,events);
+  require(block.getMagnitude(0,128)>0,"loaded Windows VST3 renders MIDI audio");
+  juce::MemoryBlock saved;instance->getStateInformation(saved);require(saved.getSize()>0,"loaded VST3 saves state");instance->setStateInformation(saved.getData(),int(saved.getSize()));
+  auto window=std::unique_ptr<juce::AudioProcessorEditor>(instance->createEditor());require(window!=nullptr,"loaded VST3 creates editor");
+  window->addToDesktop(juce::ComponentPeer::windowIsTemporary);window->setVisible(true);juce::MessageManager::getInstance()->runDispatchLoopUntil(200);
+  auto image=window->createComponentSnapshot(window->getLocalBounds());
+  auto file=juce::File::getCurrentWorkingDirectory().getChildFile("out/screenshots/Jerzy-loaded-vst3.png");file.getParentDirectory().createDirectory();
+  juce::FileOutputStream stream(file);stream.setPosition(0);stream.truncate();juce::PNGImageFormat png;require(png.writeImageToStream(image,stream),"loaded VST3 GUI captured");
+  window->removeFromDesktop();window.reset();instance->releaseResources();instance.reset();
  }
  std::cout<<"RESULT plugin integration complete\n";return 0;
  }catch(const std::exception& e){std::cerr<<"FAIL "<<e.what()<<'\n';return 1;}

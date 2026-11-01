@@ -62,8 +62,11 @@ jobs:
         id: validator
         shell: pwsh
         run: |
-          python scripts/ci-command.py out/ci/validator.log out/pluginval-build/pluginval_artefacts/Release/pluginval.exe --strictness-level 5 --validate "${{ github.workspace }}/build/windows/VoltageGarden_artefacts/Release/VST3/Voltage Garden.vst3" --output-dir "${{ github.workspace }}/out/validation"
+          python scripts/ci-command.py out/ci/validator.log out/pluginval-build/pluginval_artefacts/Release/pluginval.exe --strictness-level 5 --validate "${{ github.workspace }}/build/windows/JerzyVoltageGarden_artefacts/Release/VST3/Jerzy Voltage Garden.vst3" --output-dir "${{ github.workspace }}/out/validation"
           if ($LASTEXITCODE -ne 0) { throw 'pluginval failed' }
+      - name: Load built VST3, render MIDI, restore state and capture its editor
+        id: host
+        run: python scripts/ci-command.py out/ci/host.log "build/windows/garden_integration_artefacts/Release/garden_integration.exe" --validate "${{ github.workspace }}/build/windows/JerzyVoltageGarden_artefacts/Release/VST3/Jerzy Voltage Garden.vst3"
       - name: Publish validated checkpoint
         if: github.event_name != 'pull_request'
         continue-on-error: true
@@ -80,7 +83,7 @@ jobs:
         id: artifacts
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          name: VoltageGarden-Windows-x64-${{ github.sha }}
+          name: JerzyVoltageGarden-Windows-x64-${{ github.sha }}
           path: |
             out/release/*
             out/screenshots/*
@@ -88,7 +91,7 @@ jobs:
             out/validation/*
             out/tests/windows.xml
             out/ci/*.log
-            build/windows/VoltageGarden_artefacts/Release/VST3/Voltage Garden.vst3
+            build/windows/JerzyVoltageGarden_artefacts/Release/VST3/Jerzy Voltage Garden.vst3
           if-no-files-found: error
       - name: Retain failure diagnostics
         if: failure()

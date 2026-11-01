@@ -13,7 +13,7 @@ public:
  void processBlock(juce::AudioBuffer<float>&,juce::MidiBuffer&)override;
  juce::AudioProcessorEditor* createEditor()override;
  bool hasEditor()const override{return true;}
- const juce::String getName()const override{return "Voltage Garden";}
+ const juce::String getName()const override{return "Jerzy Voltage Garden";}
  bool acceptsMidi()const override{return true;} bool producesMidi()const override{return false;}
  double getTailLengthSeconds()const override{return 8;}
  int getNumPrograms()override{return 1;} int getCurrentProgram()override{return 0;}

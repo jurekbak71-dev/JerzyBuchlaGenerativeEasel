@@ -40,7 +40,7 @@ def build_report(phase, environ):
     }
 
 
-def evidence_files(root):
+def evidence_files(root, include_release=False):
     result = {}
     # Only known build output, never process environment or arbitrary runner files.
     for pattern in ('out/ci/*.log', 'out/tests/windows.xml', 'out/release/SHA256SUMS.txt',
@@ -53,6 +53,13 @@ def evidence_files(root):
                     stream.seek(max(0, size - 256_000))
                     data = stream.read(256_000)
                 result['evidence-' + path.name] = data
+    # Deliverables travel through the same authenticated Git channel as the logs.
+    # This avoids requiring Actions API access to retrieve the built files.
+    for path in sorted((root / 'out/release').glob('Jerzy*')) if include_release else ():
+        if path.is_file() and path.suffix.lower() in ('.zip', '.exe'):
+            if path.stat().st_size > 80_000_000:
+                raise RuntimeError('Release file exceeds the bounded Git delivery size')
+            result[path.name] = path.read_bytes()
     return result
 
 
@@ -71,7 +78,7 @@ def main():
         old = git('show', parent + ':status.json')
         if json.loads(old.stdout).get('producer') != PRODUCER:
             raise RuntimeError('Status branch is not owned by this automation; refusing replacement')
-    files = evidence_files(pathlib.Path('.'))
+    files = evidence_files(pathlib.Path('.'), include_release=phase == 'success')
     files['status.json'] = (json.dumps(report, indent=2) + '\n').encode()
     tree_lines = []
     for name, content in sorted(files.items()):

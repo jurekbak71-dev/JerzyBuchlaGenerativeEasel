@@ -77,6 +77,20 @@ class ReportingTests(unittest.TestCase):
         self.assertEqual(len(evidence), 256_000)
         self.assertTrue(evidence.endswith('final error'))
 
+    def test_release_binary_roundtrips_through_git(self):
+        directory = self.work / 'out/release'
+        directory.mkdir(parents=True)
+        payload = bytes(range(256)) * 128
+        (directory / 'JerzyVoltageGarden-Windows-x64.zip').write_bytes(payload)
+        (directory / 'unrelated.secret').write_text('must not be published')
+        result = self.publish('success')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        recovered = subprocess.check_output(['git', '--git-dir=' + str(self.remote),
+                     'show', 'refs/heads/codex/windows-build-status:JerzyVoltageGarden-Windows-x64.zip'])
+        self.assertEqual(recovered, payload)
+        self.assertNotIn('secret', self.git('--git-dir=' + str(self.remote), 'ls-tree',
+                         '--name-only', 'refs/heads/codex/windows-build-status'))
+
     def test_unowned_branch_is_preserved(self):
         self.git('push', 'origin', 'HEAD:refs/heads/codex/windows-build-status')
         result = self.publish('success')

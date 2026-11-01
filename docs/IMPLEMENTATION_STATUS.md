@@ -1,3 +1,17 @@
+# Aktualizacja 2026-11-01 — Jerzy Voltage Garden
+
+Trwają testy bieżących zmian: prefiks Jerzy w produkcie i paczkach, kontrast GUI, oktawy, przesuwanie nut dotykowej klawiatury i zwalnianie poza panelem, widoczność kabli bez ingerencji w DSP. Dodano test ładowania rzeczywistego bundla VST3, renderu MIDI, stanu i otwarcia edytora. ZIP binarny oraz źródła są rozdzielone. Dostawa plików przez ograniczony kanał Git raportów eliminuje zależność pobierania od API Actions.
+
+PASS obecnego przebiegu: rdzeń CTest Linux; 8 testów infrastruktury, w tym binarny roundtrip ZIP przez Git. Kompilacja i dalsze testy pozostają w toku; ten wpis nie stanowi potwierdzenia gotowości Windows.
+
+Nowszy od poprzedniego opisu raport `4f265a078a91764911a31df003f5a9fdba279cc1` potwierdza dla starszego kodu `b0a23ddc44395b334012133da94ff31404b4bf9d` sukces pluginval oraz instalacji i odinstalowania. Nie jest dowodem dla bieżących zmian. API Actions zwraca Forbidden, a próba pobrania poprzedniego artefaktu 404.
+
+Lokalny MinGW nie jest obsługiwany przez JUCE 8; nie zmieniano upstream, żeby omijać tę kontrolę. Alternatywne pobranie Microsoft SDK przez aka.ms odrzucone przez proxy (403). Kompilacja Windows pozostaje w istniejącym workflow MSVC.
+
+Brak oryginalnej zatwierdzonej makiety w references; brak FL Studio. Pozostałe ograniczenia funkcjonalne opisane poniżej nadal obowiązują.
+
+---
+
 # Rzeczywisty stan — 2026-10-31
 
 **Projekt pozostaje wersją rozwojową, nie spełnia pełnego MASTER_PROMPT. Nie ma jeszcze potwierdzonego instalatora ani ZIP Windows do pobrania.**

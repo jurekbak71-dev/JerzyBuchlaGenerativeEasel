@@ -18,4 +18,4 @@ if ! xprop -root _NET_SUPPORTING_WM_CHECK 2>/dev/null | rg -q 'window id'; then
   xprop -root _NET_SUPPORTING_WM_CHECK | rg 'window id'
 fi
 build/linux/garden_integration_artefacts/Release/garden_integration --screenshots >out/tests/gui.txt 2>&1
-build/pluginval/pluginval_artefacts/Release/pluginval --strictness-level 5 --validate "$PWD/build/linux/VoltageGarden_artefacts/Release/VST3/Voltage Garden.vst3" --output-dir "$PWD/out/validation" >out/tests/pluginval.txt 2>&1
+build/pluginval/pluginval_artefacts/Release/pluginval --strictness-level 5 --validate "$PWD/build/linux/JerzyVoltageGarden_artefacts/Release/VST3/Jerzy Voltage Garden.vst3" --output-dir "$PWD/out/validation" >out/tests/pluginval.txt 2>&1
