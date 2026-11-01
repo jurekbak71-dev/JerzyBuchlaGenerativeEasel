@@ -23,7 +23,10 @@ if ($LASTEXITCODE -ne 0) { throw 'Corresponding source archive failed' }
 Expand-Archive out/source.zip $source -Force
 # Include exact JUCE dependency sources; no binaries without corresponding dependency source.
 Copy-Item build/windows/_deps/juce-src "$source/JUCE" -Recurse -Force
-Get-ChildItem "$source/JUCE" -Directory -Hidden -Filter '.git' | Remove-Item -Recurse -Force
+# Git metadata may have no Hidden attribute on a Windows runner. Remove only
+# the copied metadata in generated source output, never the dependency checkout.
+if (Test-Path "$source/JUCE/.git") { Remove-Item "$source/JUCE/.git" -Recurse -Force }
+if (Test-Path "$source/JUCE/.git") { throw 'Generated source still contains Git metadata' }
 Compress-Archive out/package/* out/release/JerzyVoltageGarden-0.1.0-Windows-x64.zip -Force
 Compress-Archive out/corresponding-source/* out/release/JerzyVoltageGarden-0.1.0-Source.zip -Force
 $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
