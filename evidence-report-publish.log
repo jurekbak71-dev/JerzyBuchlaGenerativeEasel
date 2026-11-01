@@ -5,3 +5,26 @@ Published Windows build status: progress/validator-build https://github.com/jure
 Published Windows build status: progress/validator-build https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41318675177
 Published Windows build status: progress/validator-build https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41318675177
 Published Windows build status: progress/validator-build https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41318675177
+Published Windows build status: progress/validator-build https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41318675177
+Traceback (most recent call last):
+  File "D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\scripts\publish-ci-status.py", line 100, in <module>
+    main()
+  File "D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\scripts\publish-ci-status.py", line 95, in main
+    git('push', 'origin', commit + ':refs/heads/' + BRANCH)
+  File "D:\a\JerzyBuchlaGenerativeEasel\JerzyBuchlaGenerativeEasel\scripts\publish-ci-status.py", line 19, in git
+    result = subprocess.run(['git', *args], input=data, stdout=subprocess.PIPE,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\subprocess.py", line 1628, in _communicate
+    self.stdout_thread.join(self._remaining_time(endtime))
+  File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\threading.py", line 1149, in join
+    self._wait_for_tstate_lock()
+  File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\threading.py", line 1169, in _wait_for_tstate_lock
+    if lock.acquire(block, timeout):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
