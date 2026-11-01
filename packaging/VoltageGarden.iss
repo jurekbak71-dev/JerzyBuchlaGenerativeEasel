@@ -1,4 +1,4 @@
-#define AppVersion "0.1.0"
+#define AppVersion "0.2.0"
 [Setup]
 AppId={{418E956D-1377-4CF3-989B-F2C442050822}
 AppName=Jerzy Voltage Garden
@@ -11,7 +11,7 @@ PrivilegesRequired=admin
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir=..\out\release
-OutputBaseFilename=JerzyVoltageGarden-0.1.0-Windows-x64-Setup
+OutputBaseFilename=JerzyVoltageGarden-0.2.0-Windows-x64-Setup
 Compression=lzma2
 SolidCompression=yes
 LicenseFile=..\LICENSES\AGPL-3.0.txt

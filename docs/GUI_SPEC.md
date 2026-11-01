@@ -1,3 +1,13 @@
+# Aktualizacja referencji — 2026-11-01
+
+Użytkownik dostarczył w rozmowie zdjęcie fizycznego Music Easel (345×250) i następnie jednoznacznie wybrał: **„Docelowy wygląd GUI — odwzoruj układ i proporcje”**. Ta fotografia zastępuje dotychczasowy nieokreślony kierunek jako docelowa referencja kompozycji. Plik nie jest automatycznie dostępny na dysku; nie podajemy nieistniejącej lokalnej ścieżki ani licencji do reprodukcji fotografii.
+
+Implementacja 0.2: szeroka jasna górna płyta z jednym bankiem 20 długich suwaków, zwarta lewa sekcja precyzyjnych gałek i wyświetlacza, prawa kolumna niebieskich gałek oraz czerwony PANIC. Dolna sekcja: ciemna płyta marki Jerzy po lewej, niebieski pas gniazd i czerwony panel kontaktowej klawiatury po prawej. Logiczny rozmiar 1320×920, proporcja zachowywana; zakres 70–200%. Nie kopiujemy logo Buchla ani zdjęcia jako tła. Wszystkie suwaki i gniazda działają z istniejącym DSP, presetami i stanem hosta.
+
+Odtwarzamy układ i proporcje widoczne na zdjęciu; drobny druk i nieczytelne pozycje gałek nie są deklarowane jako wiernie odczytane. Nazwy kontrolek odpowiadają rzeczywistym funkcjom Jerzy.
+
+---
+
 # GUI — zatwierdzony kierunek i wymagania
 
 Stan 2026-10-30: Użytkownik zaakceptował **kierunek wizualny** pokazanej makiety: jasny metaliczny panel, stylistyka vintage Buchla, kolorowe banana-jacks, suwaki, gałki, sekcje syntezy, podłużna klawiatura touch oraz pasek BPM/transport. Użytkownik dodatkowo wymaga **fizycznie widocznych wirtualnych kabli**.

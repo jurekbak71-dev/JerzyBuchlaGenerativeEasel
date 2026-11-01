@@ -1,5 +1,5 @@
-import hashlib,json,pathlib,struct,zipfile
-root=pathlib.Path('out/delivery')
+import hashlib,json,pathlib,struct,zipfile,sys
+root=pathlib.Path(sys.argv[1] if len(sys.argv)>1 else 'out/delivery-0.2')
 status=json.loads((root/'status.json').read_text())
 assert status['phase']=='success'
 expected={}
@@ -13,7 +13,7 @@ for name,digest in expected.items():
  actual=hashlib.sha256(file.read_bytes()).hexdigest()
  assert actual==digest, name+' checksum mismatch'
  verified[name]={'bytes':file.stat().st_size,'sha256':actual}
-name='JerzyVoltageGarden-0.1.0-Windows-x64.zip'
+name='JerzyVoltageGarden-0.2.0-Windows-x64.zip'
 bundle='Jerzy Voltage Garden.vst3'
 member=bundle+'/Contents/x86_64-win/Jerzy Voltage Garden.vst3'
 with zipfile.ZipFile(root/name) as archive:
@@ -60,10 +60,10 @@ with zipfile.ZipFile(root/name) as archive:
    target=root/pathlib.Path(info.filename.replace('\\','/'))
    if info.is_dir():target.mkdir(parents=True,exist_ok=True)
    else:target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(archive.read(info))
-with zipfile.ZipFile(root/'JerzyVoltageGarden-0.1.0-Source.zip') as source:
+with zipfile.ZipFile(root/'JerzyVoltageGarden-0.2.0-Source.zip') as source:
  assert source.testzip() is None
  assert not any('/.git/' in '/'+name or name.rstrip('/').endswith('/.git') for name in source.namelist()), 'Git metadata leaked into source archive'
- assert (root/'JerzyVoltageGarden-0.1.0-Source.zip').stat().st_size<80_000_000
+ assert (root/'JerzyVoltageGarden-0.2.0-Source.zip').stat().st_size<80_000_000
  assert b'project(JerzyVoltageGarden' in source.read('CMakeLists.txt')
  for name in ('src/Engine.h','src/Editor.cpp','JUCE/LICENSE.md','LICENSES/AGPL-3.0.txt'):
   assert source.getinfo(name).file_size>0

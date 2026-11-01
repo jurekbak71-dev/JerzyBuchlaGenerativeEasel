@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 #pragma once
 #include "Plugin.h"
+#include "HardwareLook.h"
 class GardenEditor final:public juce::AudioProcessorEditor,private juce::Timer {
 public:
  explicit GardenEditor(GardenProcessor&);
@@ -11,9 +12,10 @@ public:
  void mouseDrag(const juce::MouseEvent&)override;
  void mouseUp(const juce::MouseEvent&)override;
  void setExpert(bool b);
+ static constexpr int designWidth=1320,designHeight=920;
 private:
  GardenProcessor& processor;
- juce::LookAndFeel_V4 look;
+ GardenHardwareLook look;
  std::vector<std::unique_ptr<juce::Slider>> knobs;
  std::vector<std::unique_ptr<juce::Label>> labels;
  std::vector<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>> attachments;
@@ -31,6 +33,7 @@ private:
  int keyAt(juce::Point<float>)const;
  void releaseKey();
  juce::Path cablePath(const garden::Cable&)const;
- void knob(const char*,const char*,int module,int slot);
+ void control(const char*,const char*,juce::Rectangle<int>,bool fader,juce::Colour);
+ float panelScale()const noexcept;
  bool expertView=false;
 };

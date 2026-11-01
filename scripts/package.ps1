@@ -27,8 +27,8 @@ Copy-Item build/windows/_deps/juce-src "$source/JUCE" -Recurse -Force
 # the copied metadata in generated source output, never the dependency checkout.
 if (Test-Path "$source/JUCE/.git") { Remove-Item "$source/JUCE/.git" -Recurse -Force }
 if (Test-Path "$source/JUCE/.git") { throw 'Generated source still contains Git metadata' }
-Compress-Archive out/package/* out/release/JerzyVoltageGarden-0.1.0-Windows-x64.zip -Force
-Compress-Archive out/corresponding-source/* out/release/JerzyVoltageGarden-0.1.0-Source.zip -Force
+Compress-Archive out/package/* out/release/JerzyVoltageGarden-0.2.0-Windows-x64.zip -Force
+Compress-Archive out/corresponding-source/* out/release/JerzyVoltageGarden-0.2.0-Source.zip -Force
 $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
 if (!(Test-Path $iscc)) { throw 'Inno Setup 6 not installed on runner' }
 & $iscc packaging/VoltageGarden.iss

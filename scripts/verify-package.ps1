@@ -2,15 +2,15 @@ $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 $release = 'out/release'
-$zip = "$release/JerzyVoltageGarden-0.1.0-Windows-x64.zip"
-$installer = "$release/JerzyVoltageGarden-0.1.0-Windows-x64-Setup.exe"
+$zip = "$release/JerzyVoltageGarden-0.2.0-Windows-x64.zip"
+$installer = "$release/JerzyVoltageGarden-0.2.0-Windows-x64-Setup.exe"
 $original = 'build/windows/JerzyVoltageGarden_artefacts/Release/VST3/Jerzy Voltage Garden.vst3/Contents/x86_64-win/Jerzy Voltage Garden.vst3'
 $originalHash = (Get-FileHash $original -Algorithm SHA256).Hash
 $unzip = Join-Path $env:RUNNER_TEMP "JerzyVoltageGarden-zip-$env:GITHUB_RUN_ID"
 Expand-Archive $zip $unzip -Force
 $unzipped = Join-Path $unzip 'Jerzy Voltage Garden.vst3/Contents/x86_64-win/Jerzy Voltage Garden.vst3'
 if ((Get-FileHash $unzipped -Algorithm SHA256).Hash -ne $originalHash) { throw 'ZIP binary differs from compiled VST3' }
-Expand-Archive "$release/JerzyVoltageGarden-0.1.0-Source.zip" (Join-Path $unzip 'source') -Force
+Expand-Archive "$release/JerzyVoltageGarden-0.2.0-Source.zip" (Join-Path $unzip 'source') -Force
 foreach ($path in @('source/CMakeLists.txt', 'source/src/Engine.h', 'source/JUCE/LICENSE.md', 'LICENSES/AGPL-3.0.txt')) {
     if (!(Test-Path (Join-Path $unzip $path))) { throw "ZIP missing required source or license: $path" }
 }

@@ -1,3 +1,9 @@
+# Przebudowa GUI 0.2 — w toku
+
+Nowa docelowa fotografia została potwierdzona przez użytkownika 2026-11-01. Przebudowano układ według proporcji sprzętu: górna płyta suwaków i dolny kontroler dotykowy. Wstępne testy Linux zaliczyły rzeczywisty routing po zmianie pozycji gniazd, działanie długiego suwaka i zsynchronizowanej gałki, dotykową klawiaturę i ładowanie gotowego VST3. Nowa wersja 0.2.0 wymaga jeszcze pełnej kompilacji i dostawy Windows. Linki 0.1 poniżej dotyczą poprzedniego GUI, nie nowej kompozycji.
+
+---
+
 # Jerzy Voltage Garden 0.1.0 — stan 2026-11-01
 
 Dostępne są rzeczywiste, pobrane i sprawdzone pliki Windows x64. **Jest to działająca wersja rozwojowa, a nie pełna realizacja MASTER_PROMPT.** Nie deklarujemy testów FL Studio ani zgodności pikselowej z nieobecną makietą.

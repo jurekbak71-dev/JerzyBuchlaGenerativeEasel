@@ -85,11 +85,19 @@ int main(int argc,char** argv){
   p.updatePatch({});shot("panel-clean");p.updatePatch(garden::Graph::normal());shot("panel-patched");set(p,"mode",2);shot("generative");editor->setExpert(true);shot("expert");
   juce::MemoryBlock genImage,expertImage;output.getChildFile("generative.png").loadFileAsData(genImage);output.getChildFile("expert.png").loadFileAsData(expertImage);require(genImage!=expertImage,"expert screenshot contains distinct diagnostics view");
   const auto mouse=juce::Desktop::getInstance().getMainMouseSource();auto event=[&](juce::Point<float> pos){return juce::MouseEvent(mouse,pos,juce::ModifierKeys(),1.f,0.f,0.f,0.f,0.f,editor.get(),editor.get(),juce::Time::getCurrentTime(),pos,juce::Time::getCurrentTime(),1,false);};
-  const auto before=p.patch().size;editor->mouseDown(event({38,250}));editor->mouseDrag(event({680,274}));editor->mouseUp(event({680,274}));require(p.patch().size==before+1,"GUI drag connects real graph cable");
+  const auto before=p.patch().size;editor->mouseDown(event({310,142}));editor->mouseDrag(event({726,194}));editor->mouseUp(event({726,194}));require(p.patch().size==before+1,"GUI drag connects real graph cable");
+  juce::Slider* timbreFader=nullptr;juce::Slider* shapeKnob=nullptr;
+  for(auto* child:editor->getChildren())if(auto* slider=dynamic_cast<juce::Slider*>(child)){
+   if(slider->getName()=="TIMBRE")timbreFader=slider;
+   if(slider->getName()=="SHAPE")shapeKnob=slider;
+  }
+  require(timbreFader&&timbreFader->getSliderStyle()==juce::Slider::LinearVertical&&timbreFader->getHeight()>=170,"reference layout has a long functional timbre fader");
+  timbreFader->setValue(.8,juce::sendNotificationSync);require(std::abs(p.settings().timbre-.8f)<.00001f,"hardware fader updates DSP parameter");
+  require(shapeKnob&&std::abs(shapeKnob->getValue()-.8)<.00001,"fine knob follows same host parameter");
   // Exercise the touch keyboard against the actual processor, including release outside it.
   p.factory(0);p.processBlock(b,m);p.prepareToPlay(48000,128);
-  editor->mouseDown(event({42,680}));p.processBlock(b,m);require(b.getMagnitude(0,128)>0,"GUI touch key produces audio");
-  editor->mouseDrag(event({94,680}));p.processBlock(b,m);
+  editor->mouseDown(event({311,750}));p.processBlock(b,m);require(b.getMagnitude(0,128)>0,"GUI touch key produces audio");
+  editor->mouseDrag(event({351,750}));p.processBlock(b,m);
   juce::AudioBuffer<float> expected(2,128);GardenProcessor reference;reference.factory(0);reference.processBlock(expected,m);reference.prepareToPlay(48000,128);reference.uiNote(48,110);reference.processBlock(expected,m);reference.uiNote(48,0);reference.uiNote(49,110);
   reference.processBlock(expected,m);
   require(std::equal(b.getReadPointer(0),b.getReadPointer(0)+128,expected.getReadPointer(0)),"GUI slide releases old key and plays new pitch");
@@ -111,7 +119,11 @@ int main(int argc,char** argv){
   require(block.getMagnitude(0,128)>0,"loaded VST3 renders MIDI audio");
   juce::MemoryBlock saved;instance->getStateInformation(saved);require(saved.getSize()>0,"loaded VST3 saves state");instance->setStateInformation(saved.getData(),int(saved.getSize()));
   auto window=std::unique_ptr<juce::AudioProcessorEditor>(instance->createEditor());require(window!=nullptr,"loaded VST3 creates editor");
-  window->setVisible(false);window->addToDesktop(juce::ComponentPeer::windowIsTemporary);window->getPeer()->setCurrentRenderingEngine(0);window->setTopLeftPosition(0,0);window->setVisible(true);window->toFront(true);juce::MessageManager::getInstance()->runDispatchLoopUntil(400);
+  window->setVisible(false);window->addToDesktop(juce::ComponentPeer::windowIsTemporary);window->getPeer()->setCurrentRenderingEngine(0);if(auto* display=juce::Desktop::getInstance().getDisplays().getPrimaryDisplay()){
+   const auto area=display->userArea;const float fit=std::min(1.f,std::min((area.getWidth()-24)/float(window->getWidth()),(area.getHeight()-24)/float(window->getHeight())));
+   if(fit<1.f)window->setSize(juce::roundToInt(window->getWidth()*fit),juce::roundToInt(window->getHeight()*fit));
+  }
+  window->setTopLeftPosition(0,0);window->setVisible(true);window->toFront(true);juce::MessageManager::getInstance()->runDispatchLoopUntil(400);
   auto image=captureHostedEditor(*window);
   require(image.isValid(),"loaded native VST3 window snapshot is valid");
   std::set<juce::uint32> colours;for(int y=0;y<image.getHeight();y+=16)for(int x=0;x<image.getWidth();x+=16)colours.insert(image.getPixelAt(x,y).getARGB());
