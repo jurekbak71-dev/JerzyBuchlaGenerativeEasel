@@ -28,3 +28,16 @@ Submodule path 'modules/juce': checked out '5179f4e720d8406ebd1b5401c86aea8da6cc
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/18/Enterprise/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring juceaide
+-- Building juceaide
+-- Exporting juceaide
+-- Testing juceaide
+-- Finished setting up juceaide
+-- Not building with VST2
+-- Configuring done (31.5s)
+-- Generating done (0.4s)
+-- Build files have been written to: D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/out/pluginval-build
