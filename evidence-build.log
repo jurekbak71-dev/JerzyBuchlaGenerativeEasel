@@ -62,4 +62,11 @@ creating D:/a/JerzyBuchlaGenerativeEasel/JerzyBuchlaGenerativeEasel/build/window
 [59/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_data_structures\juce_data_structures.cpp.obj
 [60/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_graphics\juce_graphics_Harfbuzz.cpp.obj
 [61/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_audio_processors_headless\juce_audio_processors_headless_ara.cpp.obj
-[62/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_audio_processors_headless\juce_audio_processors_headless_l
+[62/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_audio_processors_headless\juce_audio_processors_headless_lv2_libs.cpp.obj
+[63/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_audio_basics\juce_audio_basics.cpp.obj
+[64/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_audio_processors_headless\juce_audio_processors_headless.cpp.obj
+[65/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_audio_formats\juce_audio_formats.cpp.obj
+[66/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_dsp\juce_dsp.cpp.obj
+[67/69] Building RC object CMakeFiles\garden_integration_rc_lib.dir\Release\garden_integration_artefacts\JuceLibraryCode\garden_integration_resources.rc.res
+[68/69] Building CXX object CMakeFiles\garden_integration.dir\Release\_deps\juce-src\modules\juce_audio_devices\juce_audio_devices.cpp.obj
+[69/69] Linking CXX executable garden_integration_artefacts\Release\garden_integration.exe

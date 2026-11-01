@@ -1,13 +1,24 @@
 {
   "schema": 1,
   "producer": "voltage-garden-windows-ci",
-  "phase": "progress/build",
+  "phase": "compiled",
   "head_sha": "cc845245201a77e420f6d0f976758c3ec550a189",
   "run_id": "41322069670",
   "run_attempt": "1",
   "run_url": "https://github.com/jurekbak71-dev/JerzyBuchlaGenerativeEasel/actions/runs/41322069670",
   "artifact_url": "",
   "artifact_id": "",
-  "steps": {},
-  "updated_at": "2026-11-01T15:48:49.637083+00:00"
+  "steps": {
+    "configure": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    },
+    "build": {
+      "outputs": {},
+      "outcome": "success",
+      "conclusion": "success"
+    }
+  },
+  "updated_at": "2026-11-01T15:49:10.724616+00:00"
 }
